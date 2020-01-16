@@ -4,7 +4,7 @@
   <head>
     <title>Tool Library - <?php echo h($page_title); ?></title>
     <meta charset="utf-8">
-    <link rel="stylesheet" media="all" href="../../public/stylesheets/styles.css" >
+    <link rel="stylesheet" media="all" href="<?php echo url_for('public/stylesheets/styles.css'); ?>" >
 <!--    <script src='https://www.google.com/recaptcha/api.js' async defer></script>-->
   </head>
 
@@ -13,9 +13,9 @@
     <nav class="header">
      <a href="../../index.php" class="logo">Jackson Park Tool Library</a>
       <div class="header-right">
-        <a href="../../about.php">About</a>
+        <a href="<?php echo url_for('/about.php'); ?>">About</a>
         Browse
-        <a href="../../public/login.php">Login</a>
+        <a href="<?php echo url_for('/public/login.php'); ?>">Login</a>
       </div>
     </nav>
     <div>
