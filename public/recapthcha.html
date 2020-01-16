@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>reCAPTCHA demo: Simple page</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  </head>
+  <body>
+    <form action="recaptcha.php" method="post" enctype="multipart/form-data">
+      <input name="sender_name" placeholder="Your Name..." />
+      <input name="sender_email" placeholder="Your email..." />
+
+      <div
+        class="g-recaptcha"
+        data-sitekey="6Lc2_M8UAAAAAPyo-p2oapQZO-WQIEreJsbJHJYp
+            "
+      ></div>
+
+      <button type="submit" id="send_message">Send Message!</button>
+    </form>
+  </body>
+</html>

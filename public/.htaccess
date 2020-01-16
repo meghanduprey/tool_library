@@ -1,0 +1,1 @@
+ErrorDocument 404 http://localhost/school/WEB250/coffee-club/public/errors/error-404.php
