@@ -28,8 +28,7 @@ if(is_post_request()) {
   <div class="subject delete">
     <h1>Delete Member</h1>
     <p>Are you sure you want to delete this subject?</p>
-    <p class="item">First Name: <?php echo h($member['first_name']); ?></p>
-    <p class="item">Last Name: <?php echo h($member['last_name']); ?></p>
+    <p class="item">Email: <?php echo h($member['email']); ?></p>
 
     <form action="<?php echo url_for('/members/delete.php?id=' . h(u($member['member_ID']))); ?>" method="post">
       <div id="operations">

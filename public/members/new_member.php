@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL);
 
 require_once('../../private/initialize.php');
 
@@ -7,12 +8,10 @@ if(is_post_request()) {
   // Handle form values sent by new.php
 
   $member = [];
-  $member['first_name'] = $_POST['first_name'] ?? '';
-  $member['last_name'] = $_POST['last_name'] ?? '';
   $member['email'] = $_POST['email'] ?? '';
   $member['phone'] = $_POST['phone'] ?? '';
   $member['member_level'] = $_POST['member_level'] ?? '';
-  $member['pass_hash'] = $_POST['pass_hash'] ?? '';
+  $member['hashed_password'] = $_POST['hashed_password'] ?? '';
 
 //  $response = $_POST["g-recaptcha-response"];
 //	$url = 'https://www.google.com/recaptcha/api/siteverify';
@@ -33,16 +32,15 @@ if(is_post_request()) {
 //	if ($captcha_success->success==false) {
 //		$errors[] =  "Please click the I am not a robot checkbox";
 //	} else {
-//    $result = insert_member($member);
-//    if($result === true) {
-//      $new_id = mysqli_insert_id($db);
-//      $_SESSION['message'] = "The member was created sucessfully";
-//      redirect_to(url_for('/members/show.php?id=' . $new_id));
-//    } else {
-//      $errors= $result;
-//    }
+    $result = insert_member($member);
+    if($result === true) {
+      $new_id = mysqli_insert_id($db);
+      $_SESSION['message'] = "The member was created sucessfully";
+      redirect_to(url_for('/members/show_member.php?id=' . $new_id));
+    } else {
+      $errors= $result;
+    }
 //
-//  }
   }
   else {
     //display the form
@@ -71,16 +69,11 @@ $members["position"] = $member_count;
     <h1>Create Member</h1>
     <?php echo display_errors($errors); ?>
 
-    <form action="<?php echo url_for('/members/new.php'); ?>" method="post">
+    <form action="<?php echo url_for('/members/new_member.php'); ?>" method="post">
 
 
       <fieldset>
       <legend>New Member</legend>
-        <label for="first_name">First Name: </label>
-          <input type="text" name="first_name" value=""><br>
-
-        <label for="last_name">Last Name: </label>
-          <input type="text" name="last_name" value="" ><br>
 
         <label for="email">Email: </label>
           <input type="text" name="email" value="" ><br>
@@ -91,14 +84,14 @@ $members["position"] = $member_count;
         <label for="member_level">Member Level: (a or m)</label>
           <input type="text" name="member_level" value="" ><br>
 
-        <label for="password">Password: </label>
-          <input type="password" name="pass_hash" value="" ><br>
+        <label for="hashed_password">Password: </label>
+          <input type="password" name="hashed_password" value="" ><br>
 
       </fieldset>
 <!--      <div class="g-recaptcha" data-sitekey="6Lc2wcIUAAAAAJVJzEiv05V8ON4rMV615IwVEPn1"></div>-->
-      <div id="operations">
+    
         <input type="submit" value="Create Subject">
-      </div>
+      
     </form>
 
   </div>

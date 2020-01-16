@@ -1,0 +1,37 @@
+footer {
+  /* width: 940px; */
+  height: 20px;
+  margin: 0 0 10px 0;
+  padding: 10px 20px;
+  background-color: #000000;
+  color: #fff;
+}
+
+table {
+  border-collapse: collapse;
+  vertical-align: top;
+}
+
+tr:nth-child(even) {
+  background-color: #F2B705;
+}
+tr:nth-child(odd) {
+  background-color: #027373;
+  color: #fff;
+}
+table.list {
+  width: 100%;
+}
+
+table.list tr td {
+  border: 1px solid #999999;
+  padding: 3px;
+}
+
+table.list tr th {
+  border: 1px solid #024959;
+  background-color: #024959;
+  color: #fff;
+  text-align: left;
+  padding: 5px;
+}

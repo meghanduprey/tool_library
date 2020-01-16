@@ -16,8 +16,6 @@ $member = find_member_by_id($id);
 
   <div class="subject show">
   <h1>Member: <?php echo h($member['member_ID']); ?></h1>
-  <p>First Name: <?php echo h($member['first_name']); ?></p>
-  <p>Last Name: <?php echo h($member['last_name']); ?></p>
   <p>Email: <?php echo h($member['email']); ?></p>
   <p>Phone: <?php echo h($member['phone']); ?></p>
   <p>Member Level: <?php echo h($member['member_level']); ?></p>

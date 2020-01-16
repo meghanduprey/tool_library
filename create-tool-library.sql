@@ -13,7 +13,7 @@ DROP TABLE IF EXISTS category;
 
 CREATE TABLE category
 (
-  category_ID INT NOT NULL,
+  category_ID INT NOT NULL AUTO_INCREMENT,
   category_name VARCHAR(255) NOT NULL,
   PRIMARY KEY (category_ID)
 );
@@ -27,10 +27,9 @@ CREATE TABLE member_level
 
 CREATE TABLE members
 (
-  member_ID INT NOT NULL,
+  member_ID INT NOT NULL AUTO_INCREMENT,
   email VARCHAR(255) NOT NULL,
   phone CHAR(10) NOT NULL,
-  rating VARCHAR(5) NOT NULL,
   hashed_password VARCHAR(255) NOT NULL,
   member_level CHAR(1) NOT NULL,
   PRIMARY KEY (member_ID),
@@ -39,7 +38,7 @@ CREATE TABLE members
 
 CREATE TABLE tools
 (
-  tool_ID INT NOT NULL,
+  tool_ID INT NOT NULL AUTO_INCREMENT,
   serial_number VARCHAR(255) NOT NULL,
   tool_name VARCHAR(255) NOT NULL,
   tool_description VARCHAR(255) NOT NULL,
@@ -60,3 +59,6 @@ CREATE TABLE tool_category
 -- Populate tables
 INSERT INTO member_level VALUES ('a', 'admin');
 INSERT INTO member_level VALUES ('m', 'member');
+
+
+INSERT INTO members VALUES ('meghan.duprey@yahoo.com', '8435132115', 'password', 'a');

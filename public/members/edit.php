@@ -13,8 +13,6 @@ if(is_post_request()) {
 
   $member = [];
   $member['member_ID'] = $id;
-  $member['first_name'] = $_POST['first_name'] ?? '';
-  $member['last_name'] = $_POST['last_name'] ?? '';
   $member['email'] = $_POST['email'] ?? '';
   $member['phone'] = $_POST['phone'] ?? '';
   $member['member_level'] = $_POST['member_level'] ?? '';
@@ -56,11 +54,7 @@ if(is_post_request()) {
 
         <fieldset>
           <legend>Edit Member</legend>
-          <label for="first_name">First Name: </label>
-          <input type="text" name="first_name" value="<?php echo h($member['first_name']); ?>" ><br>
 
-        <label for="last_name">Last Name</label>
-          <input type="text" name="last_name" value="<?php echo h($member['last_name']); ?>" ><br>
 
         <label for="email">Email</label>
           <input type="text" name="email" value="<?php echo h($member['email']); ?>" ><br>

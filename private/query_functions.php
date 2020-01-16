@@ -41,20 +41,6 @@
   function validate_member($member) {
     $errors = [];
 
-    // first_name
-    if(is_blank($member['first_name'])) {
-      $errors[] = "First name cannot be blank.";
-    } elseif(!has_length($member['first_name'], ['min' => 2, 'max' => 50])) {
-      $errors[] = "Name must be between 2 and 50 characters.";
-    }
-
-    // last_name
-    if(is_blank($member['last_name'])) {
-      $errors[] = "Last name cannot be blank.";
-    } elseif(!has_length($member['last_name'], ['min' => 2, 'max' => 50])) {
-      $errors[] = "Name must be between 2 and 50 characters.";
-    }
-
     // email address
     if(is_blank($member['email'])) {
       $errors[] = "Email cannot be blank.";
@@ -80,12 +66,10 @@
       return $errors;
     }
 
-     $hashed_password = password_hash($member['pass_hash'], PASSWORD_DEFAULT);
+     $hashed_password = password_hash($member['hashed_password'], PASSWORD_DEFAULT);
     $sql = "INSERT INTO members ";
-    $sql .= "(first_name, last_name, email, phone, member_level, pass_hash) ";
+    $sql .= "(email, phone, member_level, hashed_password) ";
     $sql .= "VALUES (";
-    $sql .= "'" . db_escape($db, $member['first_name']) . "',";
-    $sql .= "'" . db_escape($db, $member['last_name']) . "',";
     $sql .= "'" . db_escape($db, $member['email']) . "',";
     $sql .= "'" . db_escape($db, $member['phone']) . "',";
     $sql .= "'" . db_escape($db, $member['member_level']) . "',";
