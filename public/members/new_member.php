@@ -23,7 +23,8 @@ if(is_post_request()) {
 	$options = array(
 		'http' => array (
 			'method' => 'POST',
-			'content' => http_build_query($data)
+			'content' => http_build_query($data),
+            'header' => 'Content-Type: application/x-www-form-urlencoded'
 		)
 	);
 	$context  = stream_context_create($options);
@@ -58,7 +59,7 @@ $members = [];
 $members["position"] = $member_count;
 
 ?>
-<!--<script src="https://www.google.com/recaptcha/api.js" async defer></script>-->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <?php $page_title = 'Create Member'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
@@ -90,7 +91,8 @@ $members["position"] = $member_count;
         <label for="hashed_password">Password: </label><br>
           <input type="password" name="hashed_password" value="" ><br>
 
-      <div class="g-recaptcha" data-sitekey="6Lc2wcIUAAAAAJVJzEiv05V8ON4rMV615IwVEPn1"></div>  
+      <div class="g-recaptcha" data-sitekey="6Lc2_M8UAAAAAPyo-p2oapQZO-WQIEreJsbJHJYp
+"></div>  
         <input type="submit" value="Create Subject">
       </fieldset>
     </form>

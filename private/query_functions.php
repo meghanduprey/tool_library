@@ -160,22 +160,43 @@ function find_tool_by_id($id) {
     return $tool; // returns an assoc. array
   }
 
+
+function find_member_ID () {
+  global $db;
+//  $email = "meghan.duprey@gmail.com";
+  $email = $_SESSION['email'];
+  $sql = "SELECT member_ID FROM members ";
+  $sql .= "WHERE email = '$email'";
+//  echo $sql;
+  $result= mysqli_query($db, $sql);
+  confirm_result_set($result);
+//  return $result;
+  $member = mysqli_fetch_assoc($result);
+  mysqli_free_result($result);
+  return $member['member_ID'];
+}
+
 function insert_tool($tool) {
     global $db;
 
     $errors = validate_tool($tool);
     if(!empty($errors)) {
-      return $errors;
+     return $errors;
     }
+    
+    $member_by_ID = find_member_ID();
 
     $sql = "INSERT INTO tools ";
     $sql .= "(serial_number, tool_name, tool_description, tool_picture, member_ID) ";
     $sql .= "VALUES (";
     $sql .= "'" . db_escape($db, $tool['serial_number']) . "',";
     $sql .= "'" . db_escape($db, $tool['tool_name']) . "',";
-    $sql .= "'" . db_escape($db, $tool['tool_desc']) . "',";
-    $sql .= "'" . db_escape($db, $tool['tool_picture']) . "'";
+    $sql .= "'" . db_escape($db, $tool['tool_description']) . "',";
+//    $sql .= "'" . db_escape($db, $tool['tool_picture']) . "',";
+    $sql .= "'test', ";
+    $sql .= "$member_by_ID";
     $sql .= ")";
+  echo $sql;
     $result = mysqli_query($db, $sql);
     // For INSERT statements, $result is true/false
     if($result) {
@@ -197,7 +218,7 @@ function validate_tool($tool) {
     } 
 
     // phone
-    if(is_blank($member['tool_description'])) {
+    if(is_blank($tool['tool_description'])) {
       $errors[] = "Tool description cannot be blank.";
     } 
 

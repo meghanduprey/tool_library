@@ -11,6 +11,7 @@
   <body>
   <div id="wrapper">
     <nav class="header">
+     <img src="<?php echo url_for('assets/wrench.png'); ?>" width="150" height="119" style="float: left;">
      <a href="<?php echo url_for('/index.php'); ?>" class="logo"><h1>Jackson Park Tool Library</h1></a>
       <div class="header-right">
         <a href="<?php echo url_for('/about.php'); ?>">About</a>

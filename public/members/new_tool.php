@@ -9,28 +9,10 @@ if(is_post_request()) {
   $tool = [];
   $tool['serial_number'] = $_POST['serial_number'] ?? '';
   $tool['tool_name'] = $_POST['tool_name'] ?? '';
-  $tool['tool_desc'] = $_POST['tool_desc'] ?? '';
-  $tool['tool_pic'] = $_POST['tool_pic'] ?? '';
+  $tool['tool_description'] = $_POST['tool_description'] ?? '';
+  $tool['tool_picture'] = $_POST['tool_picture'] ?? '';
 
-//  $response = $_POST["g-recaptcha-response"];
-//	$url = 'https://www.google.com/recaptcha/api/siteverify';
-//	$data = array(
-//		'secret' => '6Lc2_M8UAAAAAAoCy2He1OidBCkxX44UcWbLskyk
-//    ',
-//		'response' => $_POST["g-recaptcha-response"]
-//	);
-//	$options = array(
-//		'http' => array (
-//			'method' => 'POST',
-//			'content' => http_build_query($data)
-//		)
-//	);
-//	$context  = stream_context_create($options);
-//	$verify = file_get_contents($url, false, $context);
-//	$captcha_success=json_decode($verify);
-//	if ($captcha_success->success==false) {
-//		$errors[] =  "Please click the I am not a robot checkbox";
-//	} else {
+
     $result = insert_tool($tool);
     if($result === true) {
       $new_id = mysqli_insert_id($db);
@@ -39,7 +21,6 @@ if(is_post_request()) {
     } else {
       $errors= $result;
     }
-//
   }
   else {
     //display the form
@@ -73,17 +54,17 @@ $tool["position"] = $tool_count;
       <fieldset>
       <legend>New Tool</legend>
 
-        <label for="serial_number">Serial Number: </label>
+        <label for="serial_number">Serial Number: </label><br>
           <input type="text" name="serial_number" value="" ><br>
 
-        <label for="tool_name">Tool Name: </label>
+        <label for="tool_name">Tool Name: </label><br>
           <input type="text" name="tool_name" value="" ><br>
 
-        <label for="tool_desc">Tool Description:</label>
-          <input type="text" name="tool_desc" value="" ><br>
+        <label for="tool_description">Tool Description:</label><br>
+          <input type="text" name="tool_description" value="" ><br>
 
-        <label for="tool_pic">Tool Image: </label>
-          <input type="file" name="tool_pic" accept="image/*" ><br>
+        <label for="tool_picture">Tool Image: </label><br>
+          <input type="file" name="tool_picture" accept="image/*" ><br>
 
         <input type="submit" value="Add Tool">
       </fieldset>

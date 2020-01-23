@@ -12,12 +12,12 @@ $tool = find_tool_by_id($id);
 
 <div id="content">
 
-  <a class="back-link" href="<?php echo url_for('/index.php'); ?>">&laquo; Back to home</a>
+  <a class="back-link" href="<?php echo url_for('/members/new_tool.php'); ?>">&laquo; Add another tool</a>
 
   <h2>Tool: <?php echo h($tool['tool_ID']); ?></h2>
   <p>Serial Number: <?php echo h($tool['serial_number']); ?></p>
   <p>Tool Name: <?php echo h($tool['tool_name']); ?></p>
-  <p>Tool Description: <?php echo h($tool['tool_desc']); ?></p>
+  <p>Tool Description: <?php echo h($tool['tool_description']); ?></p>
   <p>Tool Image: <? php echo h($tool['tool_picture']); ?></p>
 
 </div>
