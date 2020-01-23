@@ -50,10 +50,11 @@ CREATE TABLE tools
 
 CREATE TABLE tool_category
 (
-  tool_ID INT NOT NULL,
   category_ID INT NOT NULL,
+  tool_ID INT NOT NULL,
+  FOREIGN KEY (category_ID) REFERENCES category(category_ID),
   FOREIGN KEY (tool_ID) REFERENCES tools(tool_ID),
-  FOREIGN KEY (category_ID) REFERENCES category(category_ID)
+  PRIMARY KEY (category_ID, tool_ID)
 );
 
 -- Populate tables
@@ -61,4 +62,11 @@ INSERT INTO member_level VALUES ('a', 'admin');
 INSERT INTO member_level VALUES ('m', 'member');
 
 
-INSERT INTO members VALUES ('meghan.duprey@yahoo.com', '8435132115', 'password', 'a');
+-- INSERT INTO members VALUES ('meghan.duprey@yahoo.com', '8435132115', 'password', 'a');
+
+INSERT INTO category VALUES ('1', 'automotive');
+INSERT INTO category VALUES ('2', 'carpentry');
+INSERT INTO category VALUES ('3', 'home maintenance');
+INSERT INTO category VALUES ('4', 'plumbing');
+INSERT INTO category VALUES ('5', 'yard and garden');
+

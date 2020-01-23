@@ -56,16 +56,16 @@ if(is_post_request()) {
           <legend>Edit Member</legend>
 
 
-        <label for="email">Email</label>
+        <label for="email">Email</label><br>
           <input type="text" name="email" value="<?php echo h($member['email']); ?>" ><br>
 
-        <label for="phone">Phone</label>
+        <label for="phone">Phone</label><br>
           <input type="text" name="phone" value="<?php echo h($member['phone']); ?>" ><br>
-
-        <label for="member_level">Member Level</label>
+        
+        <label for="member_level">Member Level (a or m)</label><br>
           <input type="text" name="member_level" value="<?php echo h($member['member_level']); ?>" ><br>
 
-        <label for="password">Password </label>
+        <label for="password">Password </label><br>
           <input type="password" name="password" value="<?php echo h($member['password']); ?>">
       </fieldset>
 
@@ -75,7 +75,5 @@ if(is_post_request()) {
     </form>
 
   </div>
-
-</div>
 
 <?php include(SHARED_PATH . '/footer.php'); ?>

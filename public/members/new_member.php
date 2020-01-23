@@ -13,25 +13,25 @@ if(is_post_request()) {
   $member['member_level'] = $_POST['member_level'] ?? '';
   $member['hashed_password'] = $_POST['hashed_password'] ?? '';
 
-//  $response = $_POST["g-recaptcha-response"];
-//	$url = 'https://www.google.com/recaptcha/api/siteverify';
-//	$data = array(
-//		'secret' => '6Lc2_M8UAAAAAAoCy2He1OidBCkxX44UcWbLskyk
-//    ',
-//		'response' => $_POST["g-recaptcha-response"]
-//	);
-//	$options = array(
-//		'http' => array (
-//			'method' => 'POST',
-//			'content' => http_build_query($data)
-//		)
-//	);
-//	$context  = stream_context_create($options);
-//	$verify = file_get_contents($url, false, $context);
-//	$captcha_success=json_decode($verify);
-//	if ($captcha_success->success==false) {
-//		$errors[] =  "Please click the I am not a robot checkbox";
-//	} else {
+  $response = $_POST["g-recaptcha-response"];
+	$url = 'https://www.google.com/recaptcha/api/siteverify';
+	$data = array(
+		'secret' => '6Lc2_M8UAAAAAAoCy2He1OidBCkxX44UcWbLskyk
+    ',
+		'response' => $_POST["g-recaptcha-response"]
+	);
+	$options = array(
+		'http' => array (
+			'method' => 'POST',
+			'content' => http_build_query($data)
+		)
+	);
+	$context  = stream_context_create($options);
+	$verify = file_get_contents($url, false, $context);
+	$captcha_success=json_decode($verify);
+	if ($captcha_success->success==false) {
+		$errors[] =  "Please click the I am not a robot checkbox";
+	} else {
     $result = insert_member($member);
     if($result === true) {
       $new_id = mysqli_insert_id($db);
@@ -41,6 +41,7 @@ if(is_post_request()) {
       $errors= $result;
     }
 //
+    }
   }
   else {
     //display the form
@@ -66,36 +67,35 @@ $members["position"] = $member_count;
   <a class="back-link" href="<?php echo url_for('/members/index.php'); ?>">&laquo; Back to List</a>
 
   <div class="subject new">
-    <h1>Create Member</h1>
+   <div class="center">
+     <h2>Create Member</h2>
+   </div>
     <?php echo display_errors($errors); ?>
 
     <form action="<?php echo url_for('/members/new_member.php'); ?>" method="post">
 
-
-      <fieldset>
-      <legend>New Member</legend>
-
-        <label for="email">Email: </label>
+      <fieldset class="new_member">
+     
+        <label for="email">Email: </label><br>
           <input type="text" name="email" value="" ><br>
 
-        <label for="phone">Phone Number: </label>
+        <label for="phone">Phone Number: </label><br>
           <input type="text" name="phone" value="" ><br>
 
-        <label for="member_level">Member Level: (a or m)</label>
-          <input type="text" name="member_level" value="" ><br>
+        <select name="member_level" class="member_level">
+          <option value="a">Administrator</option>
+          <option value="m">Member</option>
+        </select><br>
 
-        <label for="hashed_password">Password: </label>
+        <label for="hashed_password">Password: </label><br>
           <input type="password" name="hashed_password" value="" ><br>
 
-      </fieldset>
-<!--      <div class="g-recaptcha" data-sitekey="6Lc2wcIUAAAAAJVJzEiv05V8ON4rMV615IwVEPn1"></div>-->
-    
+      <div class="g-recaptcha" data-sitekey="6Lc2wcIUAAAAAJVJzEiv05V8ON4rMV615IwVEPn1"></div>  
         <input type="submit" value="Create Subject">
-      
+      </fieldset>
     </form>
 
   </div>
 
 </div>
 
-<?php include(SHARED_PATH . '/footer.php'); ?>

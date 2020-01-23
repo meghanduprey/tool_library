@@ -23,3 +23,4 @@ $member = find_member_by_id($id);
   </div>
 
 </div>
+<?php include(SHARED_PATH . '/footer.php'); ?>

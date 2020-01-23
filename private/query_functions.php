@@ -13,6 +13,7 @@
     return $result;
   }
 
+
   function find_member_by_id($id) {
     global $db;
 
@@ -66,7 +67,7 @@
       return $errors;
     }
 
-     $hashed_password = password_hash($member['hashed_password'], PASSWORD_DEFAULT);
+    $hashed_password = password_hash($member['hashed_password'], PASSWORD_DEFAULT);
     $sql = "INSERT INTO members ";
     $sql .= "(email, phone, member_level, hashed_password) ";
     $sql .= "VALUES (";
@@ -138,4 +139,80 @@
   }
 
 
+function find_all_tools() {
+  global $db;
+  $sql = "SELECT * FROM tools ";
+  $sql .="ORDER BY tool_ID ASC";
+  $result= mysqli_query($db, $sql);
+  confirm_result_set($result);
+  return $result;
+}
+
+function find_tool_by_id($id) {
+    global $db;
+
+    $sql = "SELECT * FROM tools ";
+    $sql .= "WHERE tool_ID='" . db_escape($db, $id) . "'";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $tool = mysqli_fetch_assoc($result);
+    mysqli_free_result($result);
+    return $tool; // returns an assoc. array
+  }
+
+function insert_tool($tool) {
+    global $db;
+
+    $errors = validate_tool($tool);
+    if(!empty($errors)) {
+      return $errors;
+    }
+
+    $sql = "INSERT INTO tools ";
+    $sql .= "(serial_number, tool_name, tool_description, tool_picture, member_ID) ";
+    $sql .= "VALUES (";
+    $sql .= "'" . db_escape($db, $tool['serial_number']) . "',";
+    $sql .= "'" . db_escape($db, $tool['tool_name']) . "',";
+    $sql .= "'" . db_escape($db, $tool['tool_desc']) . "',";
+    $sql .= "'" . db_escape($db, $tool['tool_picture']) . "'";
+    $sql .= ")";
+    $result = mysqli_query($db, $sql);
+    // For INSERT statements, $result is true/false
+    if($result) {
+      return true;
+    } else {
+      // INSERT failed
+      echo mysqli_error($db);
+      db_disconnect($db);
+      exit;
+    }
+  }
+
+function validate_tool($tool) {
+    $errors = [];
+
+    // email address
+    if(is_blank($tool['tool_name'])) {
+      $errors[] = "Tool name cannot be blank.";
+    } 
+
+    // phone
+    if(is_blank($member['tool_description'])) {
+      $errors[] = "Tool description cannot be blank.";
+    } 
+
+    return $errors;
+  }
+
+function find_tool_by_member_id($id) {
+    global $db;
+
+    $sql = "SELECT * FROM tools ";
+    $sql .= "WHERE member_ID='" . db_escape($db, $id) . "'";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $tool = mysqli_fetch_assoc($result);
+    mysqli_free_result($result);
+    return $tool; // returns an assoc. array
+  }
 ?>

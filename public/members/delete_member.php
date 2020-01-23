@@ -30,9 +30,9 @@ if(is_post_request()) {
     <p>Are you sure you want to delete this subject?</p>
     <p class="item">Email: <?php echo h($member['email']); ?></p>
 
-    <form action="<?php echo url_for('/members/delete.php?id=' . h(u($member['member_ID']))); ?>" method="post">
+    <form action="<?php echo url_for('/members/delete_member.php?id=' . h(u($member['member_ID']))); ?>" method="post">
       <div id="operations">
-        <input type="submit" name="commit" value="Delete Member" />
+        <input type="submit" name="commit" value="Delete Member" >
       </div>
     </form>
   </div>

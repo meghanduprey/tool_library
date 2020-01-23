@@ -5,7 +5,7 @@ error_reporting(E_ALL);
   $selector = bin2hex(random_bytes(8));
   $token = random_bytes(32);
 
-  $url = "https://mduprey.com/WEB250/coffee-club/public/create-new-password.php?selector=" . $selector . "&validator=" . bin2hex($token);
+  $url = "https://mduprey.com/toollibrary/public/create-new-password.php?selector=" . $selector . "&validator=" . bin2hex($token);
 
   $expires = date("U") + 1800;
 
@@ -39,7 +39,7 @@ error_reporting(E_ALL);
 
   $to = $userEmail;
 
-  $subject = "Reset your password for the Coffee Club";
+  $subject = "Reset your password for the Tool Library";
 
   $message = '<p>We received a password reset request. The link to reset your password is below. If you did not make this request, you can ignore this email.</p>';
   $message .= '<p>Here is your password reset link: <br>';

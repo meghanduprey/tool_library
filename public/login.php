@@ -28,7 +28,7 @@ if(is_post_request()) {
       // echo($member['pass_hash']);
 
     if($member) {
-      if(password_verify($password, $member['pass_hash'])) {
+      if(password_verify($password, $member['hashed_password'])) {
         //password matches
         log_in_member($member);
         redirect_to(url_for('/members/index.php'));
@@ -50,16 +50,22 @@ if(is_post_request()) {
 <?php include(SHARED_PATH . '/header.php'); ?>
 
 <div id="content">
-  <h1>Log in</h1>
+ <div class="center">
+   <h2>Log in</h2>
+ </div>
+  
 
   <?php echo display_errors($errors); ?>
 
   <form action="login.php" method="post">
-    Username:<br />
-    <input type="text" name="email" value="<?php echo h($email); ?>" /><br />
-    Password:<br />
-    <input type="password" name="password" value="" /><br />
-    <input type="submit" name="submit" value="Submit"  />
+   <fieldset class="login">
+    Username:<br>
+    <input type="text" name="email" value="<?php echo h($email); ?>" ><br>
+    Password:<br>
+    <input type="password" name="password" value="" ><br>
+    <input type="submit" name="submit" value="Submit">
+    <a href="members/new_member.php" class="create_member">Create Account</a>
+    </fieldset>
   </form>
 
   <?php
@@ -68,11 +74,10 @@ if(is_post_request()) {
       echo '<p class="signupsucess">Your password has been reset!</p>';
     }
   }
-
-
 ?>
-  <a href="reset-password.php">Forgot your password?</a>
-
+   <div class="center">
+    <a href="reset-password.php">Forgot your password?</a>
+   </div>
 </div>
 
 <?php include(SHARED_PATH . '/footer.php'); ?>
