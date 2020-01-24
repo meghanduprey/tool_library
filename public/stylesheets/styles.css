@@ -175,7 +175,8 @@ div.desc {
 
 /*FORMS*/
 .login,
-.new_member {
+.new_member,
+.new_tool {
   background-color: #027373;
   color: #fff;
   margin: 0 auto;

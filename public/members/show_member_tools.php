@@ -1,16 +1,18 @@
 <?php require_once('../../private/initialize.php'); ?>
+<?php require_login(); ?>
 
-<?php
-// $id = isset($_GET['id']) ? $_GET['id'] : '1';
-$id = $_GET['id'] ?? '1'; // PHP > 7.0
-
-$member = find_member_by_id($id);
-?>
+<?php $member_set = find_tool_by_member_id(); ?>
 
 <?php $page_title = 'My Tools'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
-
-
+<h2>My Tools</h2>
+<div class="">
+  <?php while ($member = mysqli_fetch_assoc($member_set)) { ?>
+  <div>
+    
+  </div>
+}
+</div>
 
 
 

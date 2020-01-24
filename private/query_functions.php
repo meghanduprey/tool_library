@@ -192,8 +192,8 @@ function insert_tool($tool) {
     $sql .= "'" . db_escape($db, $tool['serial_number']) . "',";
     $sql .= "'" . db_escape($db, $tool['tool_name']) . "',";
     $sql .= "'" . db_escape($db, $tool['tool_description']) . "',";
-//    $sql .= "'" . db_escape($db, $tool['tool_picture']) . "',";
-    $sql .= "'test', ";
+    $sql .= "'" . db_escape($db, $tool['tool_picture']) . "',";
+//    $sql .= "'test', ";
     $sql .= "$member_by_ID";
     $sql .= ")";
   echo $sql;
