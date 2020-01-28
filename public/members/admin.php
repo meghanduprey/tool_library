@@ -5,10 +5,11 @@
 <?php $member_set = find_all_members(); ?>
 
 <?php $page_title = 'Members'; ?>
+
 <?php include(SHARED_PATH . '/header.php'); ?>
 
 <div id="content">
-  <h2>Members<?php require_login(); ?></h2>
+  <h2>Members</h2>
     <a class="action" href="<?php echo url_for('/members/new_member.php'); ?>">Create New Member</a>
 
   <div class="member_table">
@@ -37,6 +38,7 @@
       <?php } ?>
     </table>
   </div>
+  <div class="push"></div>
 </div>
 
 <?php include(SHARED_PATH . '/footer.php'); ?>

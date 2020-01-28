@@ -10,7 +10,7 @@ if(is_post_request()) {
   $member = [];
   $member['email'] = $_POST['email'] ?? '';
   $member['phone'] = $_POST['phone'] ?? '';
-  $member['member_level'] = $_POST['member_level'] ?? '';
+//  $member['member_level'] = $_POST['member_level'] ?? '';
   $member['hashed_password'] = $_POST['hashed_password'] ?? '';
 
   $response = $_POST["g-recaptcha-response"];
@@ -65,7 +65,7 @@ $members["position"] = $member_count;
 
 <div id="content">
 
-  <a class="back-link" href="<?php echo url_for('/members/index.php'); ?>">&laquo; Back to List</a>
+  <a class="back-link" href="<?php echo url_for('/members/admin.php'); ?>">&laquo; Back to List</a>
 
   <div class="subject new">
    <div class="center">
@@ -75,18 +75,20 @@ $members["position"] = $member_count;
 
     <form action="<?php echo url_for('/members/new_member.php'); ?>" method="post">
 
-      <fieldset class="new_member">
+      <fieldset class="form">
      
         <label for="email">Email: </label><br>
           <input type="text" name="email" value="" ><br>
 
         <label for="phone">Phone Number: </label><br>
           <input type="text" name="phone" value="" ><br>
+<!--
 
         <select name="member_level" class="member_level">
           <option value="a">Administrator</option>
           <option value="m">Member</option>
         </select><br>
+-->
 
         <label for="hashed_password">Password: </label><br>
           <input type="password" name="hashed_password" value="" ><br>
@@ -98,6 +100,6 @@ $members["position"] = $member_count;
     </form>
 
   </div>
-
+  <div class="push"></div>
 </div>
 

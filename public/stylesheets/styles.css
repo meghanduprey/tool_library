@@ -18,6 +18,34 @@ h5 {
   font-family: 'Oswald', sans-serif;
 }
 
+#content {
+  min-height: 100%;
+  margin: 0 auto;
+  width: 90%;
+}
+
+.push {
+  height: 50px;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  border: 1px solid #000;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  transition: 0.3s;
+  width: 200px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
 .center {
   padding: 20px;
 }
@@ -128,10 +156,6 @@ div.gallery {
   height: 500px;
 }
 
-div.gallery:hover {
-  border: 1px solid #777;
-}
-
 div.gallery img {
   width: 100%;
   height: auto;
@@ -174,9 +198,7 @@ div.desc {
 /*END RESPONSIVE FEATURED IMAGES*/
 
 /*FORMS*/
-.login,
-.new_member,
-.new_tool {
+.form {
   background-color: #027373;
   color: #fff;
   margin: 0 auto;

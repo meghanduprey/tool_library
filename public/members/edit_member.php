@@ -3,7 +3,7 @@
 require_once('../../private/initialize.php');
 
 if(!isset($_GET['id'])) {
-  redirect_to(url_for('/members/index.php'));
+  redirect_to(url_for('/members/admin.php'));
 }
 $id = $_GET['id'];
 
@@ -22,7 +22,7 @@ if(is_post_request()) {
 
   if($result === true) {
     $_SESSION['message'] = "The member has been updated sucessfully";
-    redirect_to(url_for('/members/show.php?id=' . $id));
+    redirect_to(url_for('/members/show_member.php?id=' . $id));
   } else {
     $errors = $result;
   }
@@ -45,16 +45,16 @@ if(is_post_request()) {
 
 <div id="content">
 
-  <a class="back-link" href="<?php echo url_for('/members/index.php'); ?>">&laquo; Back to List</a>
+  <a class="back-link" href="<?php echo url_for('/members/admin.php'); ?>">&laquo; Back to List</a>
 
 
-    <h1>Edit Member</h1>
+    <div class="center">
+      <h2>Edit Member</h2>
+    </div>
     <?php echo display_errors($errors); ?>
-    <form action="<?php echo url_for('/members/edit.php?id=' . h(u($id))); ?>" method="post">
+    <form action="<?php echo url_for('/members/edit_member.php?id=' . h(u($id))); ?>" method="post">
 
-        <fieldset>
-          <legend>Edit Member</legend>
-
+      <fieldset class="form">
 
         <label for="email">Email</label><br>
           <input type="text" name="email" value="<?php echo h($member['email']); ?>" ><br>
@@ -66,14 +66,12 @@ if(is_post_request()) {
           <input type="text" name="member_level" value="<?php echo h($member['member_level']); ?>" ><br>
 
         <label for="password">Password </label><br>
-          <input type="password" name="password" value="<?php echo h($member['password']); ?>">
+          <input type="password" name="password" value="<?php echo h($member['password']); ?>"><br>
+        <input type="submit" value="Edit Subject" >
       </fieldset>
 
-      <div id="operations">
-        <input type="submit" value="Edit Subject" >
-      </div>
     </form>
-
+    <div class="push"></div>
   </div>
 
 <?php include(SHARED_PATH . '/footer.php'); ?>

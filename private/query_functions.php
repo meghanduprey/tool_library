@@ -73,7 +73,7 @@
     $sql .= "VALUES (";
     $sql .= "'" . db_escape($db, $member['email']) . "',";
     $sql .= "'" . db_escape($db, $member['phone']) . "',";
-    $sql .= "'" . db_escape($db, $member['member_level']) . "',";
+    $sql .= "'m',";
     $sql .= "'" .  db_escape($db, $hashed_password) . "'";
     $sql .= ")";
     $result = mysqli_query($db, $sql);
@@ -97,12 +97,10 @@
     }
     $hashed_password = password_hash($member['pass_hash'], PASSWORD_BCRYPT);
     $sql = "UPDATE members SET ";
-    $sql .= "first_name='" . db_escape($db, $member['first_name']) . "', ";
-    $sql .= "last_name='" . db_escape($db, $member['last_name']) . "', ";
     $sql .= "email='" . db_escape($db, $member['email']) . "', ";
     $sql .= "phone='" .db_escape($db,  $member['phone']) . "', ";
     $sql .= "member_level='" . db_escape($db, $member['member_level']) . "', ";
-    $sql .= "pass_hash='" . db_escape($db, $hashed_password) . "' ";
+    $sql .= "hashed_password='" . db_escape($db, $hashed_password) . "' ";
     $sql .= "WHERE member_ID='" . db_escape($db, $member['member_ID']) . "' ";
     $sql .= "LIMIT 1";
 
@@ -163,17 +161,38 @@ function find_tool_by_id($id) {
 
 function find_member_ID () {
   global $db;
-//  $email = "meghan.duprey@gmail.com";
   $email = $_SESSION['email'];
   $sql = "SELECT member_ID FROM members ";
   $sql .= "WHERE email = '$email'";
 //  echo $sql;
   $result= mysqli_query($db, $sql);
   confirm_result_set($result);
-//  return $result;
   $member = mysqli_fetch_assoc($result);
   mysqli_free_result($result);
   return $member['member_ID'];
+}
+
+function find_email_by_tool_ID($id) {
+  global $db;
+  $sql = "select email FROM members INNER JOIN tools ";
+  $sql .= "WHERE tool_ID='" . db_escape($db, $id) . "'";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  $member = mysqli_fetch_assoc($result);
+  mysqli_free_result($result);
+  return $member['email']; // returns an assoc. array
+}
+
+function find_member_level () {
+  global $db;
+  $email = $_SESSION['email'];
+  $sql = "SELECT member_level from members ";
+  $sql .= "WHERE email = '$email'";
+  $result= mysqli_query($db, $sql);
+  confirm_result_set($result);
+  $member = mysqli_fetch_assoc($result);
+  mysqli_free_result($result);
+  return $member['member_level'];
 }
 
 function insert_tool($tool) {
@@ -187,16 +206,16 @@ function insert_tool($tool) {
     $member_by_ID = find_member_ID();
 
     $sql = "INSERT INTO tools ";
-    $sql .= "(serial_number, tool_name, tool_description, tool_picture, member_ID) ";
+    $sql .= "(serial_number, tool_name, tool_description, category_ID, tool_picture, member_ID) ";
     $sql .= "VALUES (";
     $sql .= "'" . db_escape($db, $tool['serial_number']) . "',";
     $sql .= "'" . db_escape($db, $tool['tool_name']) . "',";
     $sql .= "'" . db_escape($db, $tool['tool_description']) . "',";
+    $sql .= "'" . db_escape($db, $tool['category_ID']) . "',";
     $sql .= "'" . db_escape($db, $tool['tool_picture']) . "',";
 //    $sql .= "'test', ";
     $sql .= "$member_by_ID";
     $sql .= ")";
-  echo $sql;
     $result = mysqli_query($db, $sql);
     // For INSERT statements, $result is true/false
     if($result) {
@@ -207,6 +226,36 @@ function insert_tool($tool) {
       db_disconnect($db);
       exit;
     }
+  }
+
+function update_tool($tool) {
+    global $db;
+
+    $errors = validate_tool($tool);
+    if(!empty($errors)) {
+      return $errors;
+    }
+
+    $sql = "UPDATE tools SET ";
+    $sql .= "serial_number='" . db_escape($db, $tool['serial_number']) . "', ";
+    $sql .= "tool_name='" . db_escape($db, $tool['tool_name']) . "', ";
+    $sql .= "tool_description='" . db_escape($db, $tool['tool_description']) . "', ";
+    $sql .= "category_ID = '" . db_escape($db, $tool['category_ID']) . "' ";
+    $sql .= "WHERE tool_ID=" . db_escape($db, $tool['tool_ID']) . " ";
+  echo $sql;
+//    $sql .= "LIMIT 1";
+
+    $result = mysqli_query($db, $sql);
+    // For UPDATE statements, $result is true/false
+    if($result) {
+      return true;
+    } else {
+      // UPDATE failed
+      echo mysqli_error($db);
+      db_disconnect($db);
+      exit;
+    }
+
   }
 
 function validate_tool($tool) {
@@ -225,15 +274,22 @@ function validate_tool($tool) {
     return $errors;
   }
 
-function find_tool_by_member_id($id) {
+//function find_category_by_id() {
+//  global $db;
+//  $sql = "SELECT category_name FROM category ";
+//  $sql .= "WHERE category_ID = '$tool['category_ID']'";
+//  
+//}
+
+function find_tool_by_member_id() {
     global $db;
+    
+    $member_by_ID = find_member_ID();
 
     $sql = "SELECT * FROM tools ";
-    $sql .= "WHERE member_ID='" . db_escape($db, $id) . "'";
+    $sql .= "WHERE member_ID= $member_by_ID";
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
-    $tool = mysqli_fetch_assoc($result);
-    mysqli_free_result($result);
-    return $tool; // returns an assoc. array
+    return $result;
   }
 ?>

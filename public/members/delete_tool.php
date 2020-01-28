@@ -3,7 +3,7 @@
 require_once('../../private/initialize.php');
 
 if(!isset($_GET['id'])) {
-  redirect_to(url_for('/members/index.php'));
+  redirect_to(url_for('/members/admin.php'));
 }
 $id = $_GET['id'];
 if(is_post_request()) {
@@ -34,7 +34,7 @@ if(is_post_request()) {
         <input type="submit" name="commit" value="Delete Tool" >
       </div>
     </form>
-
+  <div class="push"></div>
 </div>
 
 <?php include(SHARED_PATH . '/footer.php'); ?>

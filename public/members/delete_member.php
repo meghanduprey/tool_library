@@ -3,14 +3,14 @@
 require_once('../../private/initialize.php');
 
 if(!isset($_GET['id'])) {
-  redirect_to(url_for('/members/index.php'));
+  redirect_to(url_for('/members/admin.php'));
 }
 $id = $_GET['id'];
 if(is_post_request()) {
 
   $result = delete_member($id);
   $_SESSION['message'] = 'The member was deleted sucessfully';
-  redirect_to(url_for('/members/index.php'));
+  redirect_to(url_for('/members/admin.php'));
 
 } else {
   $member = find_member_by_id($id);
@@ -23,7 +23,7 @@ if(is_post_request()) {
 
 <div id="content">
 
-  <a class="back-link" href="<?php echo url_for('/members/index.php'); ?>">&laquo; Back to List</a>
+  <a class="back-link" href="<?php echo url_for('/members/admin.php'); ?>">&laquo; Back to List</a>
 
   <div class="subject delete">
     <h1>Delete Member</h1>
@@ -36,7 +36,7 @@ if(is_post_request()) {
       </div>
     </form>
   </div>
-
+  <div class="push"></div>
 </div>
 
 <?php include(SHARED_PATH . '/footer.php'); ?>

@@ -9,6 +9,17 @@
     $_SESSION['email'] = $member['email'];
     return true;
   }
+
+  function is_admin($member) {
+    $role = find_member_level();
+    if ($role == 'm') {
+    $redirect = '../public/members/show_member_tools.php';
+} else if ($role == 'a') {
+    $redirect = '../public/members/admin.php';
+} 
+}
+  
+
 // is_logged_in() contains all the logic for determining if a
 // request should be considered a "logged in" request or not.
 // It is the core of require_login() but it can also be called

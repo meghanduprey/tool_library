@@ -12,15 +12,15 @@ $member = find_member_by_id($id);
 
 <div id="content">
 
-  <a class="back-link" href="<?php echo url_for('/members/index.php'); ?>">&laquo; Back to List</a>
+  <a class="back-link" href="<?php echo url_for('/members/admin.php'); ?>">&laquo; Back to List</a>
 
   <div class="subject show">
-  <h1>Member: <?php echo h($member['member_ID']); ?></h1>
-  <p>Email: <?php echo h($member['email']); ?></p>
-  <p>Phone: <?php echo h($member['phone']); ?></p>
-  <p>Member Level: <?php echo h($member['member_level']); ?></p>
+    <h1>Member: <?php echo h($member['member_ID']); ?></h1>
+    <p>Email: <?php echo h($member['email']); ?></p>
+    <p>Phone: <?php echo h($member['phone']); ?></p>
+    <p>Member Level: <?php echo h($member['member_level']); ?></p>
 
   </div>
-
+  <div class="push"></div>
 </div>
 <?php include(SHARED_PATH . '/footer.php'); ?>

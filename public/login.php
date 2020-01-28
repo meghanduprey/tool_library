@@ -31,7 +31,7 @@ if(is_post_request()) {
       if(password_verify($password, $member['hashed_password'])) {
         //password matches
         log_in_member($member);
-        redirect_to(url_for('/members/index.php'));
+        redirect_to(url_for('/members/show_member_tools.php'));
       } else {
         //username found but password does not match
         $errors[] = $login_failure_message;

@@ -11,19 +11,19 @@
   <body>
   <div id="wrapper">
     <nav class="header">
-     <img src="<?php echo url_for('assets/wrench.png'); ?>" width="150" height="119" style="float: left;">
+      <a href="<?php echo url_for('/index.php'); ?>" class="logo"><img src="<?php echo url_for('assets/wrench.png'); ?>" width="150" height="119" style="float: left;"></a>
      <a href="<?php echo url_for('/index.php'); ?>" class="logo"><h1>Jackson Park Tool Library</h1></a>
       <div class="header-right">
-        <a href="<?php echo url_for('/about.php'); ?>">About</a>
-        <a href="#">Browse</a>
+        <a href="<?php echo url_for('/members/browse.php'); ?>">Browse</a>
         <a href="<?php echo url_for('/members/show_member_tools.php'); ?>">My Tools</a>
+        <a href="<?php echo url_for('members/admin.php'); ?>">Admins</a>
         <a href="<?php echo url_for('/login.php'); ?>">Login</a>
       </div>
     </nav>
     <div>
       <ul>
         <li>User: <?php echo $_SESSION['email'] ?? '';   ?></li>
-        <li><a href="<?php echo url_for('/members/index.php'); ?>">User List</a></li>
+        <li><a href="<?php echo url_for('/members/admin.php'); ?>">User List</a></li>
         <li><a href="<?php echo url_for('/logout.php'); ?>">Logout</a></li>
       </ul>
     </div>

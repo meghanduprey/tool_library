@@ -1,9 +1,17 @@
 <?php require_once('../../private/initialize.php');
 //file upload code here
+// random 4 digit to add to our file name
+// some people use date and time in stead of random digit
+$random_digit=rand(0000,9999);
 $target_dir = "uploads/";
-$target_file = $target_dir . basename($_FILES["tool_picture"]["name"]);
+$target_file = $target_dir . $random_digit . basename($_FILES["tool_picture"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+//combine random digit to you file name to create new file name
+//use dot (.) to combile these two variables
+
+$new_file_name=$target_file.$random_digit;
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
     $check = getimagesize($_FILES["tool_picture"]["tmp_name"]);
