@@ -64,10 +64,10 @@ if(is_post_request()) {
         <label for="tool_description">Tool Description</label><br>
           <input type="text" name="tool_description" value="<?php echo h($tool['tool_description']); ?>" ><br>
           
-        <label for="category_ID">Tool Description</label><br>
+        <label for="category_ID">Tool Category</label><br>
           <input type="text" name="category_ID" value="<?php echo h($tool['category_ID']); ?>" ><br>  
 
-        <img src ="<?php echo h($tool['tool_picture']); ?>" width="150"><br>
+        <img src ="<?php echo h($tool['tool_picture']); ?>"  alt="<?php echo h($tool['tool_picture']); ?>"width="150"><br>
         
         <input type="submit" value="Edit Tool" >
       </fieldset>

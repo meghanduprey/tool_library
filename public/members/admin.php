@@ -1,6 +1,6 @@
 <?php require_once('../../private/initialize.php'); ?>
 
-<?php require_login(); ?>
+<?php is_admin(); ?>
 
 <?php $member_set = find_all_members(); ?>
 

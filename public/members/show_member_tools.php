@@ -14,7 +14,7 @@
     <?php while ($tool = mysqli_fetch_assoc($tool_set)) { ?>
     <div class="card">
       <a href="<?php echo url_for('/members/edit_tool.php?id=' . h(u($tool['tool_ID']))); ?>">Edit tool</a>
-      <img src="<?php echo h($tool['tool_picture']); ?>" width="150" height="auto">
+      <img src="<?php echo h($tool['tool_picture']); ?>" alt="<?php echo h($tool['tool_picture']); ?>" width="150" height="auto">
       <p><?php echo h($tool['serial_number']); ?></p>
       <p><?php echo h($tool['tool_name']); ?></p>
       <p><?php echo h($tool['tool_description']); ?></p>

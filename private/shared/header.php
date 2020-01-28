@@ -22,8 +22,7 @@
     </nav>
     <div>
       <ul>
-        <li>User: <?php echo $_SESSION['email'] ?? '';   ?></li>
-        <li><a href="<?php echo url_for('/members/admin.php'); ?>">User List</a></li>
+        <li>Logged in as: <?php echo $_SESSION['email'] ?? '';   ?></li>
         <li><a href="<?php echo url_for('/logout.php'); ?>">Logout</a></li>
       </ul>
     </div>

@@ -22,16 +22,19 @@ if(is_post_request()) {
 
     $member = find_member_by_email($email);
     $login_failure_message = "Login failed";
-    // print_r($member);
-    // die();
-
-      // echo($member['pass_hash']);
 
     if($member) {
       if(password_verify($password, $member['hashed_password'])) {
         //password matches
         log_in_member($member);
-        redirect_to(url_for('/members/show_member_tools.php'));
+        $role = find_member_level();
+        if ($role == 'm') {
+        $redirect = '../public/members/show_member_tools.php';
+        } else if ($role == 'a') {
+        $redirect = '../public/members/admin.php';
+        } 
+        header('Location: ' . $redirect);
+//        redirect_to(url_for('/members/show_member_tools.php'));
       } else {
         //username found but password does not match
         $errors[] = $login_failure_message;

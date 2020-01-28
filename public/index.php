@@ -4,16 +4,9 @@
 <?php include(SHARED_PATH . '/header.php'); ?>
 
 <div id="content">
+
+<!--  <div class="center">-->
 <!--
-  <div id="main-menu">
-    <h2>Main Menu</h2>
-    <ul>
-      <li><a href="<?php echo url_for('/members/admin.php'); ?>">View Members</a></li>
-      <li><a href="<?php echo url_for('/login.php');?>">Login</a></li>
-    </ul>
-  </div>
--->
-  <div class="center">
     <h2>Featured Tools</h2>
     <div class="responsive">
       <div class="gallery">
@@ -35,7 +28,8 @@
         <div class="desc">12ft Ladder</div>
       </div>
     </div>
-  </div>
+-->
+<!--  </div>-->
 
   
   <div class="clearfix"></div>
@@ -49,7 +43,7 @@
     <h2>History</h2>
     <p>The Jackson Park Neighborhood Tool Library was started by Meghan Duprey in the spring of 2020. She dreampt of a place where neighbors could share and borrow tools from each other to get projects done around the house and so neighbors could get to know one another.</p>
   </div>
-
+  <div class="push"></div>
 </div>
 
 <?php include(SHARED_PATH . '/footer.php'); ?>

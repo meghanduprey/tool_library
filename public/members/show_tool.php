@@ -21,8 +21,8 @@ $email = find_email_by_tool_ID($id);
   <p>Tool Name: <?php echo h($tool['tool_name']); ?></p>
   <p>Tool Description: <?php echo h($tool['tool_description']); ?></p>
   <p>Tool Category: <?php echo h($tool['category_ID']); ?></p>
-  <p>Tool Picture: <br><img src="<?php echo h($tool['tool_picture']); ?>" width="200"></p>
-  <a href="<?php echo 'mailto:' . $email; ?>">Email Owner</a>
+  <p>Tool Picture: <br><img src="<?php echo h($tool['tool_picture']); ?>"  alt="<?php echo h($tool['tool_picture']); ?>" width="200"></p>
+  <a href="<?php echo 'mailto:' . $email; ?>">Email Owner to request tool</a>
   <div class="push">
   </div>
 </div>
