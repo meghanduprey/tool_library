@@ -1,7 +1,6 @@
 <?php
-error_reporting(E_ALL);
-
 require_once('../../private/initialize.php');
+is_admin(); 
 
 if(is_post_request()) {
 

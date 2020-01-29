@@ -8,7 +8,7 @@
 <div id="content">
   <div class="center">
     <h2>My Tools</h2>
-    <a href="<?php echo url_for('/members/new_tool.php'); ?>">Add New Tool</a>
+    <p><a href="<?php echo url_for('/members/new_tool.php'); ?>">Add New Tool</a></p>
   </div>
   <div class="flex">
     <?php while ($tool = mysqli_fetch_assoc($tool_set)) { ?>

@@ -14,7 +14,10 @@ $email = find_email_by_tool_ID($id);
 
 <div id="content">
 
-  <p><a href="<?php echo url_for('/members/browse.php'); ?>">&laquo; Browse All Tools</a></p>
+  <div class="center">
+    <p><a href="<?php echo url_for('/members/browse.php'); ?>">&laquo; Browse All Tools</a></p>
+    <p><a href="<?php echo url_for('/members/new_tool.php'); ?>">&laquo; Add a tool</a></p>
+  </div>
 
   <h2>Tool: <?php echo h($tool['tool_ID']); ?></h2>
   <p>Serial Number: <?php echo h($tool['serial_number']); ?></p>

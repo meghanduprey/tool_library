@@ -292,4 +292,14 @@ function find_tool_by_member_id() {
     confirm_result_set($result);
     return $result;
   }
+
+function search_form($searchterm) {
+  global $db;
+  $sql = "SELECT * FROM tools INNER JOIN category WHERE tool_name LIKE '$searchterm' OR tool_description LIKE '$searchterm' OR category_name LIKE '$searchterm'";
+  $result= mysqli_query($db, $sql);
+  confirm_result_set($result);
+  $tool = mysqli_fetch_assoc($result);
+  mysqli_free_result($result);
+  return $tool;
+}
 ?>

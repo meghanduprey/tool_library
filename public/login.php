@@ -61,7 +61,7 @@ if(is_post_request()) {
   <?php echo display_errors($errors); ?>
 
   <form action="login.php" method="post">
-   <fieldset class="login">
+   <fieldset class="form">
     Username:<br>
     <input type="text" name="email" value="<?php echo h($email); ?>" ><br>
     Password:<br>

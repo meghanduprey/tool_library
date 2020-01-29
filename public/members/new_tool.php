@@ -93,9 +93,10 @@ $tool["position"] = $tool_count;
 
 <div id="content">
 
-  <a class="back-link" href="<?php echo url_for('/members/show_member_tools.php'); ?>">&laquo; My Tools</a>
-
     <div class="center">
+      <p><a href="<?php echo url_for('/members/show_member_tools.php'); ?>">&laquo; My Tools</a></p>
+      <p><a href="<?php echo url_for('/members/browse.php'); ?>">&laquo; Browse All Tools</a></p>
+
       <h2>Create Tool</h2>
     </div>
     <?php echo display_errors($errors); ?>
@@ -120,6 +121,8 @@ $tool["position"] = $tool_count;
           <option value="3">Home Maintenance</option>
           <option value="4">Plumbing</option>
           <option value="5">Yard and Garden</option>
+          <option value="6">Hand Tools</option>
+          
         </select><br>
 
         <label for="tool_picture">Tool Image: </label><br>

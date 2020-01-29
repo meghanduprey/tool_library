@@ -45,12 +45,12 @@ if(is_post_request()) {
 
 <div id="content">
 
-  <a class="back-link" href="<?php echo url_for('/members/show_member_tools.php'); ?>">&laquo; Back to My Tools</a>
+  <div class="center">
+    <p><a class="back-link" href="<?php echo url_for('/members/show_member_tools.php'); ?>">&laquo; Back to My Tools</a></p>
 
 
-    <div class="center">
-      <h2>Edit Tool</h2>
-    </div>
+    <h2>Edit Tool</h2>
+  </div>
     <?php echo display_errors($errors); ?>
     <form action="<?php echo url_for('/members/edit_tool.php?id=' . h(u($id))); ?>" method="post">
 

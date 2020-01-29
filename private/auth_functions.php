@@ -11,13 +11,18 @@
   }
 
  function is_admin() {
-   $role = find_member_level();
-   $redirect = "";
-   if ($role == 'm') {
-        $redirect = url_for('../public/members/show_member_tools.php'); 
+   if(!is_logged_in()) {
+    redirect_to(url_for('/login.php'));
+  } else {
+    $role = find_member_level();
+    $redirect = "";
+    if ($role == 'm') {
+        $redirect = url_for('../public/members/not_an_admin.php'); 
       } 
         header('Location: ' . $redirect);
- }
+   }
+}
+   
   
 
 // is_logged_in() contains all the logic for determining if a

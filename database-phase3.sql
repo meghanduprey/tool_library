@@ -54,11 +54,10 @@ INSERT INTO member_level VALUES ('a', 'admin');
 INSERT INTO member_level VALUES ('m', 'member');
 
 
--- INSERT INTO members VALUES ('meghan.duprey@yahoo.com', '8435132115', 'password', 'a');
-
 INSERT INTO category VALUES ('1', 'automotive');
 INSERT INTO category VALUES ('2', 'carpentry');
 INSERT INTO category VALUES ('3', 'home maintenance');
 INSERT INTO category VALUES ('4', 'plumbing');
 INSERT INTO category VALUES ('5', 'yard and garden');
+INSERT INTO category VALUES ('6', 'hand tools');
 

@@ -57,7 +57,8 @@ h5 {
 
 .center h2,
 .center p,
-.center a {
+.center a ,
+.center form {
   text-align: center;
 }
 
@@ -165,10 +166,6 @@ div.desc {
   font-family: 'Open Sans', sans-serif;
   padding: 15px;
   text-align: center;
-}
-
-* {
-  box-sizing: border-box;
 }
 
 .responsive {
