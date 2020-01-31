@@ -41,11 +41,19 @@ CREATE TABLE tools
   serial_number VARCHAR(255) NOT NULL,
   tool_name VARCHAR(255) NOT NULL,
   tool_description VARCHAR(255) NOT NULL,
-  category_ID INT NOT NULL,
   tool_picture VARCHAR(255) NOT NULL,
-  Member_ID INT NOT NULL,
+  member_ID INT NOT NULL,
   PRIMARY KEY (tool_ID),
-  FOREIGN KEY (member_ID) REFERENCES members(member_ID),
+  FOREIGN KEY (member_ID) REFERENCES members(member_ID)
+);
+
+CREATE TABLE tool_category
+(
+  tool_category_ID INT NOT NULL AUTO_INCREMENT,
+  tool_ID INT NOT NULL,
+  category_ID INT NOT NULL,
+  PRIMARY KEY (tool_category_ID),
+  FOREIGN KEY (tool_ID) REFERENCES tools(tool_ID),
   FOREIGN KEY (category_ID) REFERENCES category(category_ID)
 );
 

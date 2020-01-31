@@ -3,7 +3,7 @@
 <?php
 // $id = isset($_GET['id']) ? $_GET['id'] : '1';
 $id = $_GET['id'] ?? '1'; // PHP > 7.0
-
+require_login();
 $tool = find_tool_by_id($id);
 
 $email = find_email_by_tool_ID($id);

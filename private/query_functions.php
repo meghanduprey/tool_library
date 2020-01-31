@@ -139,7 +139,7 @@
 
 function find_all_tools() {
   global $db;
-  $sql = "SELECT * FROM tools ";
+  $sql = "SELECT * FROM tools INNER JOIN category ON tools.category_ID = category.category_ID ";
   $sql .="ORDER BY tool_ID ASC";
   $result= mysqli_query($db, $sql);
   confirm_result_set($result);
@@ -149,7 +149,7 @@ function find_all_tools() {
 function find_tool_by_id($id) {
     global $db;
 
-    $sql = "SELECT * FROM tools ";
+    $sql = "SELECT * FROM tools INNER JOIN category ON tools.category_ID = category.category_ID ";
     $sql .= "WHERE tool_ID='" . db_escape($db, $id) . "'";
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
@@ -174,7 +174,7 @@ function find_member_ID () {
 
 function find_email_by_tool_ID($id) {
   global $db;
-  $sql = "select email FROM members INNER JOIN tools ";
+  $sql = "select email FROM members INNER JOIN tools ON members.member_ID = tools.member_ID ";
   $sql .= "WHERE tool_ID='" . db_escape($db, $id) . "'";
   $result = mysqli_query($db, $sql);
   confirm_result_set($result);
@@ -185,7 +185,12 @@ function find_email_by_tool_ID($id) {
 
 function find_member_level () {
   global $db;
-  $email = $_SESSION['email'];
+  if(isset($_SESSION['email'])) {
+    $email = $_SESSION['email'];
+  } else {
+    $email = "";
+  
+  }
   $sql = "SELECT member_level from members ";
   $sql .= "WHERE email = '$email'";
   $result= mysqli_query($db, $sql);
@@ -206,12 +211,11 @@ function insert_tool($tool) {
     $member_by_ID = find_member_ID();
 
     $sql = "INSERT INTO tools ";
-    $sql .= "(serial_number, tool_name, tool_description, category_ID, tool_picture, member_ID) ";
+    $sql .= "(serial_number, tool_name, tool_description, tool_picture, member_ID) ";
     $sql .= "VALUES (";
     $sql .= "'" . db_escape($db, $tool['serial_number']) . "',";
     $sql .= "'" . db_escape($db, $tool['tool_name']) . "',";
     $sql .= "'" . db_escape($db, $tool['tool_description']) . "',";
-    $sql .= "'" . db_escape($db, $tool['category_ID']) . "',";
     $sql .= "'" . db_escape($db, $tool['tool_picture']) . "',";
 //    $sql .= "'test', ";
     $sql .= "$member_by_ID";
@@ -286,7 +290,7 @@ function find_tool_by_member_id() {
     
     $member_by_ID = find_member_ID();
 
-    $sql = "SELECT * FROM tools ";
+    $sql = "SELECT * FROM tools INNER JOIN category ON tools.category_ID = category.category_ID ";
     $sql .= "WHERE member_ID= $member_by_ID";
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
@@ -295,11 +299,9 @@ function find_tool_by_member_id() {
 
 function search_form($searchterm) {
   global $db;
-  $sql = "SELECT * FROM tools INNER JOIN category WHERE tool_name LIKE '$searchterm' OR tool_description LIKE '$searchterm' OR category_name LIKE '$searchterm'";
+  $sql = "SELECT * FROM tools INNER JOIN category ON tools.category_ID = category.category_ID WHERE tool_name LIKE '%$searchterm%' OR tool_description LIKE '%$searchterm%' OR category_name LIKE '%$searchterm%'";
   $result= mysqli_query($db, $sql);
   confirm_result_set($result);
-  $tool = mysqli_fetch_assoc($result);
-  mysqli_free_result($result);
-  return $tool;
+  return $result;
 }
 ?>

@@ -7,7 +7,11 @@ require_login();
 // some people use date and time in stead of random digit
 $random_digit=rand(0000,9999);
 $target_dir = "uploads/";
+if(isset($_FILES['tool_picture'])){
 $target_file = $target_dir . $random_digit .basename($_FILES["tool_picture"]["name"]);
+} else {
+  $target_file = "";
+}
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
@@ -21,23 +25,19 @@ if(isset($_POST['submit'])) {
         $errors[] = "File is not an image.";
         $uploadOk = 0;
     }
-}
+  
     // Check if file already exists
     if (file_exists($target_file)) {
         echo "Sorry, file already exists.";
         $uploadOk = 0;
     }
     // Check file size
+  if(isset($_FILES['tool_picture'])){
     if ($_FILES["tool_picture"]["size"] > 500000) {
         echo "Sorry, your file is too large.";
         $uploadOk = 0;
     }
-    // Allow certain file formats
-    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-    && $imageFileType != "gif" ) {
-        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-        $uploadOk = 0;
-    }
+  }
     // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
         echo "Sorry, your file was not uploaded.";
@@ -67,14 +67,8 @@ if(isset($_POST['submit'])) {
             echo "Sorry, there was an error uploading your file.";
         }
     }
+} //end if POST['submit']
 
-  //upload file code stops here
-
-  
-  
-//  else {
-//    //display the form
-//  }
 
 
 
@@ -115,13 +109,21 @@ $tool["position"] = $tool_count;
           <input type="text" name="tool_description" value="" ><br>
           
         <label for="category_ID">Tool Category: </label><br>  
-        <select name="category_ID">
+         <input type="checkbox" name="category_ID" value="1"> Automotive <br>
+         <input type="checkbox" name="category_ID" value="2"> Carpentry <br>
+         <input type="checkbox" name="category_ID" value="3"> Home Maintenance <br>
+         <input type="checkbox" name="category_ID" value="4"> Plumbing <br>
+         <input type="checkbox" name="category_ID" value="5"> Yard and Garden <br>
+         <input type="checkbox" name="category_ID" value="6"> Hand Tools <br>
+         
+<!--
           <option value="1">Automotive</option>
           <option value="2">Carpentry</option>
           <option value="3">Home Maintenance</option>
           <option value="4">Plumbing</option>
           <option value="5">Yard and Garden</option>
           <option value="6">Hand Tools</option>
+-->
           
         </select><br>
 

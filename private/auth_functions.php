@@ -10,7 +10,7 @@
     return true;
   }
 
- function is_admin() {
+ function redirect_by_member_level() {
    if(!is_logged_in()) {
     redirect_to(url_for('/login.php'));
   } else {
@@ -21,9 +21,7 @@
       } 
         header('Location: ' . $redirect);
    }
-}
-   
-  
+} 
 
 // is_logged_in() contains all the logic for determining if a
 // request should be considered a "logged in" request or not.

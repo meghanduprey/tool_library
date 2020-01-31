@@ -1,6 +1,6 @@
 <?php
 require_once('../../private/initialize.php');
-is_admin(); 
+redirect_by_member_level(); 
 
 if(is_post_request()) {
 

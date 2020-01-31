@@ -6,8 +6,9 @@
 
 p,
 a, 
-li {
-  font-family: 'Open Sans', sans-serif;
+li,
+label {
+  font-family: 'Open Sans', 'Helvetica', sans-serif;
 }
 
 h1,
@@ -15,7 +16,7 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Oswald', 'Helvetica', sans-serif;
 }
 
 #content {
@@ -37,7 +38,7 @@ h5 {
   border: 1px solid #000;
   margin: 10px;
   padding: 10px;
-  text-align: center;
+/*  text-align: center;*/
   transition: 0.3s;
   width: 200px;
 }
@@ -48,6 +49,7 @@ h5 {
 
 .center {
   padding: 20px;
+  text-align: center;
 }
 
 .center img {
@@ -55,11 +57,8 @@ h5 {
   margin: 0 auto;
 }
 
-.center h2,
-.center p,
-.center a ,
 .center form {
-  text-align: center;
+/*  text-align: center;*/
 }
 
 .create_member {
@@ -86,6 +85,9 @@ h5 {
 }
 
 /*HEADER NAVIGATION*/
+.header-img {
+  width: 100%;
+}
 .header {
   background-color: #027373;
   color: #fff;
@@ -126,6 +128,10 @@ h5 {
 }
 
 @media screen and (max-width: 500px) {
+  .logo {
+    display: none;
+  }
+  
   .header a {
     float: none;
     display: block;
@@ -200,7 +206,7 @@ div.desc {
   color: #fff;
   margin: 0 auto;
   padding: 20px;
-  text-align: center;
+/*  text-align: center;*/
   width: 500px;
 }
 
@@ -208,6 +214,7 @@ input[type="submit"] {
   background-color: #F2B705;
   border-radius: 3px;
   cursor: pointer;
+  font-family: 'Open Sans', 'Helvetica', sans-serif;
   font-size: 16px;
   margin-top: 5px;
   padding: 10px;
@@ -217,15 +224,55 @@ input[type="submit"] {
 input[type="text"],
 input[type="password"]{
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 3px;
   box-sizing: border-box;
   display: inline-block;
+  font-family: 'Open Sans', 'Helvetica', sans-serif;
+  font-size: 16px;
   margin: 8px 0;
   padding: 12px 20px;
 }
 .member_level {
   padding: 20px;
 }
+
+.select {
+  display: block;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+  color: #444;
+  font-size: 16px;
+  font-family: 'Open Sans', 'Helvetica', sans-serif;
+  font-weight: 700;
+  line-height: 1.3;
+/*  margin: 0 auto;*/
+  max-width: 100%;
+  padding: 12px 20px;
+  width: 50%;
+  background-color: #fff;
+}
+
+.select-css::-ms-expand {
+  display: none;
+}
+
+.select-css:hover {
+  border-color: #888;
+}
+
+.select-css:focus {
+  border-color: #aaa;
+  box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+  box-shadow: 0 0 0 3px -moz-mac-focusring;
+  color: #222;
+  outline: none;
+}
+
+.select-css option {
+	font-weight:normal;
+}
+
 /*TABLES*/
 .member_table {
   overflow-x:auto;
