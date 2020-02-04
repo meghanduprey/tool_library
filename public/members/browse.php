@@ -21,36 +21,48 @@
       <p><a href="<?php echo url_for('/members/browse.php'); ?>">&laquo; Back to Browse</a></p>
     </div>
     <div class="flex">
-     <?php while ($show_search_tool = mysqli_fetch_assoc($search_tool)) { ?>
+      <?php  $saved_tool_ID = "";  ?>
+      <?php while ($show_search_tool = mysqli_fetch_assoc($search_tool)) { 
+      if($show_search_tool['tool_ID'] != $saved_tool_ID) { 
+      $saved_tool_ID = $show_search_tool['tool_ID'];
+      ?>
+
       <div class="card">
         <a class="action" href="<?php echo url_for('/members/show_tool.php?id=' . h(u($show_search_tool['tool_ID']))); ?>">View</a>
-        <img src="<?php echo h($show_search_tool['tool_picture']); ?>" alt="<?php echo h($tool['tool_picture']); ?>" width="150" height="auto">
+        <img src="<?php echo h($show_search_tool['tool_picture']); ?>" alt="<?php echo h($tool['tool_picture']); ?>" width="150">
         <p><?php echo h($show_search_tool['serial_number']); ?></p>
         <p><?php echo h($show_search_tool['tool_name']); ?></p>
         <p><?php echo h($show_search_tool['tool_description']); ?></p>
         <p><?php echo h($show_search_tool['category_name']); ?></p>
+        <?php } else { ?>
+          <p><?php echo h($show_search_tool['category_name']); ?></p>
+        <?php } //end else?>
+      <?php } //end while loop?>
       </div>
-      <?php } ?>
     </div>
  <?php } else { ?>
 
     <div class="flex">
+    <?php  $saved_tool_ID = "";  ?>
     <?php while ($tool = mysqli_fetch_assoc($tool_set)) { ?>
+     <?php if($tool['tool_ID'] != $saved_tool_ID) { 
+      $saved_tool_ID = $tool['tool_ID'];
+      ?>
       <div class="card">
        <div class="center">
          <a class="action" href="<?php echo url_for('/members/show_tool.php?id=' . h(u($tool['tool_ID']))); ?>">View</a>
        </div>
-        <img src="<?php echo h($tool['tool_picture']); ?>" alt="<?php echo h($tool['tool_picture']); ?>" width="150" height="auto">
+        <img src="<?php echo h($tool['tool_picture']); ?>" alt="<?php echo h($tool['tool_picture']); ?>" width="150">
         <p><?php echo h($tool['serial_number']); ?></p>
         <p><?php echo h($tool['tool_name']); ?></p>
         <p><?php echo h($tool['tool_description']); ?></p>
-<!--        put another fetch -->
-       <p><?php var_dump ($tool['category_name']); ?></p>
         <p><?php echo h($tool['category_name']); ?></p>
+     <?php } else { ?>
+        <p><?php echo h($tool['category_name']); ?></p>
+    <?php } //end else ?>
+    <?php   } //end while?>
       </div>
-    <?php } 
-       }
-    ?>
+    <?php   } //end else ?> 
     </div>
   
 

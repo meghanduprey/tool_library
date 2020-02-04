@@ -13,7 +13,6 @@
     return $result;
   }
 
-
   function find_member_by_id($id) {
     global $db;
 
@@ -37,7 +36,6 @@
     mysqli_free_result($result);
     return $member; // returns an assoc. array
   }
-
 
   function validate_member($member) {
     $errors = [];
@@ -114,7 +112,6 @@
       db_disconnect($db);
       exit;
     }
-
   }
 
   function delete_member($id) {
@@ -135,8 +132,6 @@
       exit;
     }
   }
-
-
 
 function find_member_ID () {
   global $db;

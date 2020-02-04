@@ -11,7 +11,7 @@
   <body>
   <div id="wrapper">
     <nav class="header">
-      <a href="<?php echo url_for('/index.php'); ?>" class="logo"><img src="<?php echo url_for('assets/wrench.png'); ?>" width="150" height="119" style="float: left;"></a>
+      <a href="<?php echo url_for('/index.php'); ?>" class="logo"><img src="<?php echo url_for('assets/wrench.png'); ?>" width="150" height="119" alt="wrench drawing" style="float: left;"></a>
      <a href="<?php echo url_for('/index.php'); ?>" class="logo"><h1>Jackson Park Tool Library</h1></a>
       <div class="header-right">
         <a href="<?php echo url_for('/members/browse.php'); ?>">Browse</a>
@@ -31,7 +31,6 @@
       </div>
     </nav>
     <div>
-        <p>Logged in as: <?php echo $_SESSION['email'] ?? '';   ?></p>
 <!--        <li><a href="<?php echo url_for('/logout.php'); ?>">Logout</a></li>-->
     </div>
     <?php echo display_session_message(); ?>

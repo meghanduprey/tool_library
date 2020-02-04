@@ -123,7 +123,7 @@ function find_tool_by_member_id() {
     
     $member_by_ID = find_member_ID();
 
-    $sql = "SELECT * FROM tools ";
+    $sql = "SELECT * FROM tools  INNER JOIN tool_category ON tools.tool_ID = tool_category.tool_ID INNER JOIN category ON tool_category.category_ID = category.category_ID ";
     $sql .= "WHERE member_ID= $member_by_ID";
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
