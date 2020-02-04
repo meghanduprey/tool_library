@@ -26,7 +26,7 @@
           <a href="<?php echo url_for('/login.php'); ?>">Login</a>
         <?php }?>
          <?php if(is_logged_in()){ ?>
-          <a href="<?php echo url_for('/logout.php'); ?>">Logout</a>
+          <a href="<?php echo url_for('/logout.php'); ?>">Logout <?php echo $_SESSION['email']; ?></a>
         <?php }?> 
       </div>
     </nav>

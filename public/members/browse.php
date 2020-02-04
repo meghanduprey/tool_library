@@ -38,12 +38,14 @@
     <?php while ($tool = mysqli_fetch_assoc($tool_set)) { ?>
       <div class="card">
        <div class="center">
-         <p><a class="action" href="<?php echo url_for('/members/show_tool.php?id=' . h(u($tool['tool_ID']))); ?>">View</a></p>
+         <a class="action" href="<?php echo url_for('/members/show_tool.php?id=' . h(u($tool['tool_ID']))); ?>">View</a>
        </div>
         <img src="<?php echo h($tool['tool_picture']); ?>" alt="<?php echo h($tool['tool_picture']); ?>" width="150" height="auto">
         <p><?php echo h($tool['serial_number']); ?></p>
         <p><?php echo h($tool['tool_name']); ?></p>
         <p><?php echo h($tool['tool_description']); ?></p>
+<!--        put another fetch -->
+       <p><?php var_dump ($tool['category_name']); ?></p>
         <p><?php echo h($tool['category_name']); ?></p>
       </div>
     <?php } 

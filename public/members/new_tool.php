@@ -15,7 +15,7 @@ $target_file = $target_dir . $random_digit .basename($_FILES["tool_picture"]["na
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
-if(isset($_POST['submit'])) {
+if(is_post_request()) {
   //upload file code starts here
   $check = getimagesize($_FILES["tool_picture"]["tmp_name"]);
     if($check !== false) {
@@ -51,24 +51,26 @@ if(isset($_POST['submit'])) {
         $tool['serial_number'] = $_POST['serial_number'] ?? '';
         $tool['tool_name'] = $_POST['tool_name'] ?? '';
         $tool['tool_description'] = $_POST['tool_description'] ?? '';
-        $tool['category_ID'] = $_POST['category_ID'] ?? '';
         $tool['tool_picture'] = $target_file;
+        $category =[];
+        $category = $_POST['category_ID'];
 
-
-          $result = insert_tool($tool);
+        $result = insert_tool($tool, $category);
           if($result === true) {
-            $new_id = mysqli_insert_id($db);
+//            $new_id = mysqli_insert_id($db);
             $_SESSION['message'] = "The tool was created sucessfully";
-            redirect_to(url_for('/members/show_tool.php?id=' . $new_id));
+            redirect_to(url_for('/members/show_member_tools.php'));
+
           } else {
             $errors= $result;
           }  
-        } else {
-            echo "Sorry, there was an error uploading your file.";
-        }
+      }
     }
-} //end if POST['submit']
+  //else {
+//            echo "Sorry, there was an error uploading your file.";
+//        }
 
+    }
 
 
 
@@ -81,7 +83,6 @@ $tool = [];
 $tool["position"] = $tool_count;
 
 ?>
-<!--<script src="https://www.google.com/recaptcha/api.js" async defer></script>-->
 <?php $page_title = 'Create Tool'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
@@ -109,24 +110,13 @@ $tool["position"] = $tool_count;
           <input type="text" name="tool_description" value="" ><br>
           
         <label for="category_ID">Tool Category: </label><br>  
-         <input type="checkbox" name="category_ID" value="1"> Automotive <br>
-         <input type="checkbox" name="category_ID" value="2"> Carpentry <br>
-         <input type="checkbox" name="category_ID" value="3"> Home Maintenance <br>
-         <input type="checkbox" name="category_ID" value="4"> Plumbing <br>
-         <input type="checkbox" name="category_ID" value="5"> Yard and Garden <br>
-         <input type="checkbox" name="category_ID" value="6"> Hand Tools <br>
+         <input type="checkbox" name="category_ID[]" value="1"> Automotive <br>
+         <input type="checkbox" name="category_ID[]" value="2"> Carpentry <br>
+         <input type="checkbox" name="category_ID[]" value="3"> Home Maintenance <br>
+         <input type="checkbox" name="category_ID[]" value="4"> Plumbing <br>
+         <input type="checkbox" name="category_ID[]" value="5"> Yard and Garden <br>
+         <input type="checkbox" name="category_ID[]" value="6"> Hand Tools <br>
          
-<!--
-          <option value="1">Automotive</option>
-          <option value="2">Carpentry</option>
-          <option value="3">Home Maintenance</option>
-          <option value="4">Plumbing</option>
-          <option value="5">Yard and Garden</option>
-          <option value="6">Hand Tools</option>
--->
-          
-        </select><br>
-
         <label for="tool_picture">Tool Image: </label><br>
           <input type="file" name="tool_picture" accept="image/*" ><br>
 

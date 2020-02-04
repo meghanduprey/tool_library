@@ -64,20 +64,13 @@ if(is_post_request()) {
         <label for="tool_description">Tool Description</label><br>
           <input type="text" name="tool_description" value="<?php echo h($tool['tool_description']); ?>" ><br>
           
-<!--
-        <label for="category_ID">Tool Category</label><br>
-          <input type="text" name="category_ID" value="<?php echo h($tool['category_ID']); ?>" ><br>  
--->
         <label for="category_ID">Tool Category: </label><br>  
-        <select name="category_ID" class="select">
-          <option value="1">Automotive</option>
-          <option value="2">Carpentry</option>
-          <option value="3">Home Maintenance</option>
-          <option value="4">Plumbing</option>
-          <option value="5">Yard and Garden</option>
-          <option value="6">Hand Tools</option>
-          
-        </select><br>
+         <input type="checkbox" name="category_ID[]" value="1"> Automotive <br>
+         <input type="checkbox" name="category_ID[]" value="2"> Carpentry <br>
+         <input type="checkbox" name="category_ID[]" value="3"> Home Maintenance <br>
+         <input type="checkbox" name="category_ID[]" value="4"> Plumbing <br>
+         <input type="checkbox" name="category_ID[]" value="5"> Yard and Garden <br>
+         <input type="checkbox" name="category_ID[]" value="6"> Hand Tools <br>
 
         <img src ="<?php echo h($tool['tool_picture']); ?>"  alt="<?php echo h($tool['tool_picture']); ?>"width="150"><br>
         
