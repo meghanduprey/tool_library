@@ -16,7 +16,8 @@
   </div>
    <?php if(is_post_request()) {
       $searchterm = $_POST['searchterm'];
-      $search_tool = search_form($searchterm); ?>
+      $search_tool = search_form($searchterm); 
+      $search_tool_category = search_form_category($searchterm); ?>
       
       <p class="center"><a href="<?php echo url_for('/members/browse.php'); ?>">&laquo; Back to Browse</a></p>
       <div class="flex">

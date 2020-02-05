@@ -142,7 +142,15 @@ function find_tool_by_member_id() {
 
 function search_form($searchterm) {
   global $db;
-  $sql = "SELECT * FROM tools INNER JOIN tool_category ON tools.tool_ID = tool_category.tool_ID INNER JOIN category ON tool_category.category_ID = category.category_ID WHERE tool_name LIKE '%$searchterm%' OR tool_description LIKE '%$searchterm%' OR category_name LIKE '%$searchterm%'";
+  $sql = "SELECT * FROM tools WHERE tool_name LIKE '%$searchterm%' OR tool_description LIKE '%$searchterm%'";
+  $result= mysqli_query($db, $sql);
+  confirm_result_set($result);
+  return $result;
+}
+
+function search_form_category($searchterm) {
+  global $db;
+  $sql = "SELECT * FROM category WHERE category_name LIKE '%$searchterm%'";
   $result= mysqli_query($db, $sql);
   confirm_result_set($result);
   return $result;
