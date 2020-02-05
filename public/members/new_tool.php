@@ -54,12 +54,12 @@ if(is_post_request()) {
         $tool['tool_picture'] = $target_file;
         $category =[];
         $category = $_POST['category_ID'];
-
+          
         $result = insert_tool($tool, $category);
-          if($result === true) {
+          if($result) {
+            redirect_to(url_for('/members/show_member_tools.php'));
 //            $new_id = mysqli_insert_id($db);
             $_SESSION['message'] = "The tool was created sucessfully";
-            redirect_to(url_for('/members/show_member_tools.php'));
 
           } else {
             $errors= $result;

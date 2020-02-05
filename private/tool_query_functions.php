@@ -10,11 +10,16 @@
   return $result;
 }
 
+function find_tool_categories($id) {
+  global $db;
+  $sql = //find all categories for a given tool based on the id
+}
+
 function find_tool_by_id($id) {
     global $db;
 
-    $sql = "SELECT * FROM tools ";
-    $sql .= "WHERE tool_ID='" . db_escape($db, $id) . "'";
+    $sql = "SELECT * FROM tools INNER JOIN tool_category ON tools.tool_ID = tool_category.tool_ID INNER JOIN category ON tool_category.category_ID = category.category_ID ";
+    $sql .= "WHERE tools.tool_ID='" . db_escape($db, $id) . "'";
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
     $tool = mysqli_fetch_assoc($result);
