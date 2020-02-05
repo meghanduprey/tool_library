@@ -3,7 +3,7 @@
 
  function find_all_tools() {
   global $db;
-  $sql = "SELECT * FROM tools INNER JOIN tool_category ON tools.tool_ID = tool_category.tool_ID INNER JOIN category ON tool_category.category_ID = category.category_ID ";
+  $sql = "SELECT * FROM tools ";
   $sql .="ORDER BY tools.tool_ID ASC";
   $result= mysqli_query($db, $sql);
   confirm_result_set($result);
@@ -12,7 +12,12 @@
 
 function find_tool_categories($id) {
   global $db;
-  $sql = //find all categories for a given tool based on the id
+   //find all categories for a given tool based on the id
+  $sql = "SELECT category_name from category INNER JOIN tool_category ON tool_category.category_ID = category.category_ID INNER JOIN tools on tools.tool_ID = tool_category.tool_ID ";
+  $sql .= "WHERE tools.tool_ID='" . db_escape($db, $id) . "'";
+  $result= mysqli_query($db, $sql);
+  confirm_result_set($result);
+  return $result;
 }
 
 function find_tool_by_id($id) {
