@@ -17,8 +17,9 @@ if(is_post_request()) {
   $tool['tool_name'] = $_POST['tool_name'] ?? '';
   $tool['tool_description'] = $_POST['tool_description'] ?? '';
   $tool['tool_picture'] = $_POST['tool_picture'] ?? '';
-
-  $result = update_tool($tool);
+  $category =[];
+  $category = $_POST['category_ID'];
+  $result = update_tool($tool, $category);
 
   if($result === true) {
     $_SESSION['message'] = "The tool has been updated sucessfully";
@@ -55,6 +56,7 @@ if(is_post_request()) {
     <form action="<?php echo url_for('/members/edit_tool.php?id=' . h(u($id))); ?>" method="post">
 
       <fieldset class="form">
+         <img src ="<?php echo h($tool['tool_picture']); ?>"  alt="<?php echo h($tool['tool_picture']); ?>"width="150"><br>
         <label for="serial_number">Serial Number</label><br>
           <input type="text" name="serial_number" value="<?php echo h($tool['serial_number']); ?>" ><br>
 
@@ -71,8 +73,6 @@ if(is_post_request()) {
          <input type="checkbox" name="category_ID[]" value="4"> Plumbing <br>
          <input type="checkbox" name="category_ID[]" value="5"> Yard and Garden <br>
          <input type="checkbox" name="category_ID[]" value="6"> Hand Tools <br>
-
-        <img src ="<?php echo h($tool['tool_picture']); ?>"  alt="<?php echo h($tool['tool_picture']); ?>"width="150"><br>
         
         <input type="submit" value="Edit Tool" >
       </fieldset>

@@ -49,10 +49,9 @@ CREATE TABLE tools
 
 CREATE TABLE tool_category
 (
-  tool_category_ID INT NOT NULL AUTO_INCREMENT,
   tool_ID INT NOT NULL,
   category_ID INT NOT NULL,
-  PRIMARY KEY (tool_category_ID),
+  PRIMARY KEY (tool_ID, category_ID),
   FOREIGN KEY (tool_ID) REFERENCES tools(tool_ID),
   FOREIGN KEY (category_ID) REFERENCES category(category_ID)
 );

@@ -83,7 +83,7 @@ function insert_tool($tool, $category) {
     }
   }
 
-function update_tool($tool) {
+function update_tool($tool, $category) {
     global $db;
 
     $errors = validate_tool($tool);
@@ -94,15 +94,19 @@ function update_tool($tool) {
     $sql = "UPDATE tools SET ";
     $sql .= "serial_number='" . db_escape($db, $tool['serial_number']) . "', ";
     $sql .= "tool_name='" . db_escape($db, $tool['tool_name']) . "', ";
-    $sql .= "tool_description='" . db_escape($db, $tool['tool_description']) . "', ";
+    $sql .= "tool_description='" . db_escape($db, $tool['tool_description']) . "' ";
     $sql .= "WHERE tool_ID=" . db_escape($db, $tool['tool_ID']) . " ";
-  echo $sql;
 //    $sql .= "LIMIT 1";
 
     $result = mysqli_query($db, $sql);
     // For UPDATE statements, $result is true/false
+      $tool_ID = $tool['tool_ID'];
+      foreach($category as $category_ID) {
+        $category_ID;
+    }
+      $sql3= "UPDATE tool_category SET tool_ID = '".$tool_ID."', category_ID = '". $category_ID."' WHERE tool_ID=" . db_escape($db, $tool['tool_ID']) . "";
+     $result2= mysqli_query($db, $sql3);
     if($result) {
-      return true;
     } else {
       // UPDATE failed
       echo mysqli_error($db);
