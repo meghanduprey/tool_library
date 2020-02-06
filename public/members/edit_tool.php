@@ -75,6 +75,9 @@ if(is_post_request()) {
          <input type="checkbox" name="category_ID[]" value="6"> Hand Tools <br>
         
         <input type="submit" value="Edit Tool" >
+        
+          <a class="block" href="<?php echo url_for('/members/delete_tool.php?id=' . $id); ?>">Delete Tool</a>
+        
       </fieldset>
 
     </form>

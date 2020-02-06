@@ -18,7 +18,7 @@
         </div>
         <img src="<?php echo h($tool['tool_picture']); ?>" alt="<?php echo h($tool['tool_picture']); ?>" width="150" height="auto">
         <p><?php echo h($tool['serial_number']); ?></p>
-        <p><?php echo h($tool['tool_name']); ?></p>
+        <p><strong><?php echo h($tool['tool_name']); ?></strong></p>
         <p><?php echo h($tool['tool_description']); ?></p>
         <?php $id = $tool['tool_ID']; ?>
         <?php $category_set = find_tool_categories($id); ?>

@@ -159,4 +159,26 @@ function search_form_category($searchterm) {
   confirm_result_set($result);
   return $result;
 }
+
+function delete_tool($id) {
+    global $db;
+  $sql = "DELETE FROM tool_category ";
+  $sql .= "WHERE tool_ID = '".  db_escape($db, $id) . "' ";
+  $result = mysqli_query($db, $sql);
+  
+
+    // For DELETE statements, $result is true/false
+    if($result) {
+      $sql2 = "DELETE FROM tools ";
+      $sql2 .= "WHERE tool_ID='" . db_escape($db, $id) . "' ";
+      $sql2 .= "LIMIT 1";
+      $result2 = mysqli_query($db, $sql2);
+      return true;
+    } else {
+      // DELETE failed
+      echo mysqli_error($db);
+      db_disconnect($db);
+      exit;
+    }
+  }
 ?>
