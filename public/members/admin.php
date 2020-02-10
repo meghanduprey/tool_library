@@ -16,6 +16,8 @@
      <table class="list">
       <tr>
         <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
         <th>Email</th>
         <th>Phone</th>
         <th>Member Level</th>
@@ -26,6 +28,8 @@
       <?php while($member = mysqli_fetch_assoc($member_set)) { ?>
         <tr>
           <td><?php echo h($member['member_ID']); ?></td>
+          <td><?php echo h($member['fname']); ?></td> 
+          <td><?php echo h($member['lname']); ?></td> 
           <td><?php echo h($member['email']); ?></td>
           <td><?php echo h($member['phone']); ?></td>
           <td><?php echo h($member['member_level']); ?></td>

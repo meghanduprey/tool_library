@@ -83,30 +83,30 @@ function insert_tool($tool, $category) {
     }
   }
 
-function update_tool($tool, $category) {
+function update_tool($tool, $category, $id) {
     global $db;
 
     $errors = validate_tool($tool);
     if(!empty($errors)) {
       return $errors;
     }
-
-    $sql = "UPDATE tools SET ";
-    $sql .= "serial_number='" . db_escape($db, $tool['serial_number']) . "', ";
-    $sql .= "tool_name='" . db_escape($db, $tool['tool_name']) . "', ";
-    $sql .= "tool_description='" . db_escape($db, $tool['tool_description']) . "' ";
-    $sql .= "WHERE tool_ID=" . db_escape($db, $tool['tool_ID']) . " ";
-//    $sql .= "LIMIT 1";
-
-    $result = mysqli_query($db, $sql);
-    // For UPDATE statements, $result is true/false
-      $tool_ID = $tool['tool_ID'];
-      foreach($category as $category_ID) {
-        $category_ID;
+    $sql = "DELETE FROM tool_category WHERE tool_ID = $id";
+    $result= mysqli_query($db, $sql);
+    
+    foreach($category as $category_ID) {
+      $sql2= "INSERT INTO tool_category (tool_ID, category_ID) VALUES ('".$id."','". $category_ID."'); ";
+     $result2= mysqli_query($db, $sql2);
     }
-      $sql3= "UPDATE tool_category SET tool_ID = '".$tool_ID."', category_ID = '". $category_ID."' WHERE tool_ID=" . db_escape($db, $tool['tool_ID']) . "";
-     $result2= mysqli_query($db, $sql3);
-    if($result) {
+    
+    if($result2) {
+    $sql3 = "UPDATE tools SET ";
+    $sql3 .= "serial_number='" . db_escape($db, $tool['serial_number']) . "', ";
+    $sql3 .= "tool_name='" . db_escape($db, $tool['tool_name']) . "', ";
+    $sql3 .= "tool_description='" . db_escape($db, $tool['tool_description']) . "' ";
+    $sql3 .= "WHERE tool_ID=" . db_escape($db, $tool['tool_ID']) . " ";
+
+    $result3 = mysqli_query($db, $sql3);
+    // For UPDATE statements, $result is true/false
     } else {
       // UPDATE failed
       echo mysqli_error($db);
@@ -161,11 +161,10 @@ function search_form_category($searchterm) {
 }
 
 function delete_tool($id) {
-    global $db;
+  global $db;
   $sql = "DELETE FROM tool_category ";
   $sql .= "WHERE tool_ID = '".  db_escape($db, $id) . "' ";
   $result = mysqli_query($db, $sql);
-  
 
     // For DELETE statements, $result is true/false
     if($result) {

@@ -10,7 +10,7 @@ if(is_post_request()) {
 
   $result = delete_tool($id);
   $_SESSION['message'] = 'The member was deleted sucessfully';
-  redirect_to(url_for('/index.php'));
+  redirect_to(url_for('/members/show_member_tools.php'));
 
 } else {
   $tool = find_tool_by_id($id);

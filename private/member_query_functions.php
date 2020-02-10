@@ -40,6 +40,16 @@
   function validate_member($member) {
     $errors = [];
 
+    // first name
+    if(is_blank($member['fname'])) {
+      $errors[] = "First Name cannot be blank.";
+    } 
+    
+    // last name
+    if(is_blank($member['lname'])) {
+      $errors[] = "Last Name cannot be blank.";
+    } 
+    
     // email address
     if(is_blank($member['email'])) {
       $errors[] = "Email cannot be blank.";
@@ -67,8 +77,10 @@
 
     $hashed_password = password_hash($member['hashed_password'], PASSWORD_DEFAULT);
     $sql = "INSERT INTO members ";
-    $sql .= "(email, phone, member_level, hashed_password) ";
+    $sql .= "(fname, lname, email, phone, member_level, hashed_password) ";
     $sql .= "VALUES (";
+    $sql .= "'" . db_escape($db, $member['fname']) . "',";
+    $sql .= "'" . db_escape($db, $member['lname']) . "',";
     $sql .= "'" . db_escape($db, $member['email']) . "',";
     $sql .= "'" . db_escape($db, $member['phone']) . "',";
     $sql .= "'m',";
@@ -95,6 +107,8 @@
     }
     $hashed_password = password_hash($member['pass_hash'], PASSWORD_BCRYPT);
     $sql = "UPDATE members SET ";
+    $sql .= "fname='". db_escape($db, $member['fname']) . "', ";
+    $sql .= "lname='". db_escape($db, $member['lname']) . "', ";
     $sql .= "email='" . db_escape($db, $member['email']) . "', ";
     $sql .= "phone='" .db_escape($db,  $member['phone']) . "', ";
     $sql .= "member_level='" . db_escape($db, $member['member_level']) . "', ";

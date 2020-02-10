@@ -7,6 +7,8 @@ if(is_post_request()) {
   // Handle form values sent by new.php
 
   $member = [];
+  $member['fname'] = $_POST['fname'] ?? '';
+  $member['lname'] = $_POST['lname'] ?? '';
   $member['email'] = $_POST['email'] ?? '';
   $member['phone'] = $_POST['phone'] ?? '';
 //  $member['member_level'] = $_POST['member_level'] ?? '';
@@ -75,12 +77,18 @@ $members["position"] = $member_count;
     <form action="<?php echo url_for('/members/new_member.php'); ?>" method="post">
 
       <fieldset class="form">
+        <label for="fname">First Name: </label><br>
+          <input type="text" name="fname" value=""> <br> 
+        
+        <label for="lname">Last Name: </label><br>
+        <input type="text" name="lname" value=""> <br>  
      
         <label for="email">Email: </label><br>
           <input type="text" name="email" value="" ><br>
 
         <label for="phone">Phone Number: </label><br>
           <input type="text" name="phone" value="" ><br>
+          
 <!--
 
         <select name="member_level" class="member_level">

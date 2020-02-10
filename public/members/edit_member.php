@@ -13,6 +13,8 @@ if(is_post_request()) {
 
   $member = [];
   $member['member_ID'] = $id;
+  $member['fname'] = $_POST['fname'] ;
+  $member['lname'] = $_POST['lname'] ;
   $member['email'] = $_POST['email'] ?? '';
   $member['phone'] = $_POST['phone'] ?? '';
   $member['member_level'] = $_POST['member_level'] ?? '';
@@ -55,7 +57,12 @@ if(is_post_request()) {
     <form action="<?php echo url_for('/members/edit_member.php?id=' . h(u($id))); ?>" method="post">
 
       <fieldset class="form">
-
+        <label for="fname">First Name: </label><br>
+          <input type="text" name="fname" value=""> <br> 
+        
+        <label for="lname">Last Name: </label><br>
+        <input type="text" name="lname" value=""> <br> 
+       
         <label for="email">Email</label><br>
           <input type="text" name="email" value="<?php echo h($member['email']); ?>" ><br>
 

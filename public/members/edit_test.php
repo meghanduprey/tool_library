@@ -75,7 +75,7 @@ while($row = $result->fetch_assoc()) {
     <h2>Edit Tool</h2>
   </div>
     <?php echo display_errors($errors); ?>
-    <form action="<?php echo url_for('/members/edit_tool.php?id=' . h(u($id))); ?>" method="post">
+    <form action="<?php echo url_for('/members/edit_test.php?id=' . h(u($id))); ?>" method="post">
 
       <fieldset class="form">
          <img src ="<?php echo h($tool['tool_picture']); ?>"  alt="<?php echo h($tool['tool_picture']); ?>"width="150"><br>
@@ -94,6 +94,15 @@ while($row = $result->fetch_assoc()) {
                 <?=htmlspecialchars($category["name"])?>
             </label><br/>
         <?php endforeach ?>
+        
+        <!--
+         <input type="checkbox" name="category_ID[]" value="1" <?php echo $checked1; ?>> <label for="1">Automotive</label> <br>
+         <input type="checkbox" name="category_ID[]" value="2" <?php echo $checked2; ?>> <label for="2">Carpentry</label> <br>
+         <input type="checkbox" name="category_ID[]" value="3" <?php echo $checked3; ?>> <label for="3">Home Maintenance</label> <br>
+         <input type="checkbox" name="category_ID[]" value="4" <?php echo $checked4; ?>> <label for="4">Plumbing </label><br>
+         <input type="checkbox" name="category_ID[]" value="5" <?php echo $checked5; ?>> <label for="5">Yard and Garden</label> <br>
+         <input type="checkbox" name="category_ID[]" value="6" <?php echo $checked6; ?>> <label for="6">Hand Tools</label> <br>
+-->
         
         <input type="submit" value="Edit Tool" >
         

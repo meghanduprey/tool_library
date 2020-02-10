@@ -14,8 +14,10 @@ $member = find_member_by_id($id);
 
   <a class="back-link" href="<?php echo url_for('/members/admin.php'); ?>">&laquo; Back to List</a>
 
-  <div class="subject show">
+  <div class="member-card">
     <h1>Member: <?php echo h($member['member_ID']); ?></h1>
+    <p>First Name: <?php echo h($member['fname']); ?></p>
+    <p>Last Name: <?php echo h($member['lname']); ?></p>
     <p>Email: <?php echo h($member['email']); ?></p>
     <p>Phone: <?php echo h($member['phone']); ?></p>
     <p>Member Level: <?php echo h($member['member_level']); ?></p>

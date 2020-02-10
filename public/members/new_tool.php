@@ -32,10 +32,10 @@ if(is_post_request()) {
         $uploadOk = 0;
     }
     // Check file size
-  if(isset($_FILES['tool_picture'])){
-    if ($_FILES["tool_picture"]["size"] > 500000) {
-        echo "Sorry, your file is too large.";
-        $uploadOk = 0;
+    if(isset($_FILES['tool_picture'])){
+      if ($_FILES["tool_picture"]["size"] > 500000) {
+          echo "Sorry, your file is too large.";
+          $uploadOk = 0;
     }
   }
     // Check if $uploadOk is set to 0 by an error
@@ -56,7 +56,8 @@ if(is_post_request()) {
         $category = $_POST['category_ID'];
           
         $result = insert_tool($tool, $category);
-          if($result) {
+          
+          if(!$result) {
             redirect_to(url_for('/members/show_member_tools.php'));
 //            $new_id = mysqli_insert_id($db);
             $_SESSION['message'] = "The tool was created sucessfully";

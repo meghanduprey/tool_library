@@ -52,6 +52,16 @@ h5 {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
+.member-card {
+  border: 1px solid #000;
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+/*  text-align: center;*/
+  transition: 0.3s;
+  width: 300px;
+}
+
 .center {
   padding: 20px;
   text-align: center;
@@ -63,16 +73,26 @@ h5 {
   margin: 0 auto;
 }
 
-.center form {
-/*  text-align: center;*/
-}
-
 .create_member {
   color: #fff;
   display: block;
   padding: 10px;
 }
 
+.center-card {
+  margin: 0 auto;
+}
+
+.button {
+  background-color: #DC143C;
+  border-radius: 3px;
+  color: #fff;
+  margin-top: 3px;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  width: 150px;
+}
 /* Errors */
 
 .errors {
@@ -163,7 +183,7 @@ footer {
   margin: 0 auto;
   padding: 20px;
 /*  text-align: center;*/
-  width: 500px;
+  width: 300px;
 }
 
 input[type="submit"] {
