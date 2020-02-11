@@ -56,6 +56,18 @@ CREATE TABLE tool_category
   FOREIGN KEY (category_ID) REFERENCES category(category_ID)
 );
 
+CREATE TABLE ratings
+(
+  rating_ID INT NOT NULL AUTO_INCREMENT,
+  rating INT NOT NULL,
+  rater_member_ID INT NOT NULL,
+  ratee_member_ID INT NOT NULL,
+  rating_text TEXT NOT NULL,
+  FOREIGN KEY (rater_member_ID) REFERENCES members(member_ID),
+  FOREIGN KEY (ratee_member_ID) REFERENCES members(member_ID),
+  PRIMARY KEY (rating_ID)
+)
+
 -- Populate tables
 INSERT INTO member_level VALUES ('a', 'admin');
 INSERT INTO member_level VALUES ('m', 'member');
