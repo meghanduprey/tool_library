@@ -2,25 +2,28 @@
 
 require_once('../../private/initialize.php');
 require_login(); 
-
+$sql = "SELECT member_ID, fname, lname FROM members";
+$query = mysqli_query($db, $sql);
+while ( $array[] = $query->fetch_object() );
+array_pop ( $array );
 
 if(is_post_request()) { 
-  $rater_id= find_member_ID();
+  global $db;
   $rating = [];
+  $rating['member_ID'] = $_POST['name'];
   $rating['rating'] = $_POST['rating'];
   $rating['review'] = $_POST['review'];
-  $fname = $_POST['fname'];
-  $lname = $_POST['lname'];
   
-  $result = insert_rating($fname, $lname, $rating, $rater_id);
   
-  if($result === true) {
-      $new_id = mysqli_insert_id($db);
-      $_SESSION['message'] = "The member was created sucessfully";
-      redirect_to(url_for('/members/show_review.php?id=' . $new_id));
-    } else {
-      $errors= $result;
-    }
+
+  
+//  if($result === true) {
+//      $new_id = mysqli_insert_id($db);
+//      $_SESSION['message'] = "The member was created sucessfully";
+//      redirect_to(url_for('/members/show_review.php?id=' . $new_id));
+//    } else {
+//      $errors= $result;
+//    }
 } else {   
           
       }
@@ -48,17 +51,18 @@ if(is_post_request()) {
       <p><a href="<?php echo url_for('/members/show_member_tools.php'); ?>">&laquo; My Tools</a></p>
       <p><a href="<?php echo url_for('/members/browse.php'); ?>">&laquo; Browse All Tools</a></p>
 
-      <h2>New Review</h2>
+      <h2>Leave a Review</h2>
     </div>
     <?php echo display_errors($errors); ?>
     <form action="<?php echo url_for('/members/rating.php'); ?>" method="post">
 
       <fieldset class="form">
-        <label for="fname">First Name: </label><br>
-          <input type="text" name="fname" value=""> <br> 
-        
-        <label for="lname">Last Name: </label><br>
-        <input type="text" name="lname" value=""> <br>  
+         
+        <select name="name" class="select">
+         <?php foreach ( $array as $option ) : ?>
+          <option value="<?php echo $option->member_ID; ?>"><?php echo $option->fname . " " . $option->lname; ?></option>
+         <?php endforeach; ?>
+        </select><br>
         
         <input type="radio" name="rating" id="5"><label for="5">5</label>
         <input type="radio" name="rating" id="4"><label for="4">4</label>

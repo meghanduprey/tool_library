@@ -67,7 +67,7 @@ CREATE TABLE ratings
   FOREIGN KEY (rater_member_ID) REFERENCES members(member_ID),
   FOREIGN KEY (ratee_member_ID) REFERENCES members(member_ID),
   PRIMARY KEY (rating_ID)
-)
+);
 
 -- Populate tables
 INSERT INTO member_level VALUES ('a', 'admin');
@@ -80,4 +80,3 @@ INSERT INTO category VALUES ('3', 'home maintenance');
 INSERT INTO category VALUES ('4', 'plumbing');
 INSERT INTO category VALUES ('5', 'yard and garden');
 INSERT INTO category VALUES ('6', 'hand tools');
-

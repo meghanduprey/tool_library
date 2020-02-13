@@ -185,6 +185,14 @@ function find_all_ratings() {
     return $result;
   }
 
+function find_member_ID_and_name() {
+  global $db; 
+  $sql = "SELECT member_ID, fname, lname FROM members";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  return $result;
+}
+
 function insert_rating($fname, $lname, $rating, $rater_id) {
   global $db;
   $sql = "SELECT member_ID FROM members WHERE fname LIKE '%$fname%' AND lname LIKE '%$lname%'";
