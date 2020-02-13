@@ -18,7 +18,6 @@ if(is_post_request()) {
   $member['email'] = $_POST['email'] ?? '';
   $member['phone'] = $_POST['phone'] ?? '';
   $member['member_level'] = $_POST['member_level'] ?? '';
-  $member['pass_hash'] = $_POST['pass_hash'] ?? '';
 
   $result = update_member($member);
 
@@ -72,8 +71,6 @@ if(is_post_request()) {
         <label for="member_level">Member Level (a or m)</label><br>
           <input type="text" name="member_level" value="<?php echo h($member['member_level']); ?>" ><br>
 
-        <label for="password">Password </label><br>
-          <input type="password" name="password" value="<?php echo h($member['password']); ?>"><br>
         <input type="submit" value="Edit Subject" >
       </fieldset>
 

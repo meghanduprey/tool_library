@@ -105,14 +105,12 @@
     if(!empty($errors)) {
       return $errors;
     }
-    $hashed_password = password_hash($member['pass_hash'], PASSWORD_BCRYPT);
     $sql = "UPDATE members SET ";
     $sql .= "fname='". db_escape($db, $member['fname']) . "', ";
     $sql .= "lname='". db_escape($db, $member['lname']) . "', ";
     $sql .= "email='" . db_escape($db, $member['email']) . "', ";
     $sql .= "phone='" .db_escape($db,  $member['phone']) . "', ";
-    $sql .= "member_level='" . db_escape($db, $member['member_level']) . "', ";
-    $sql .= "hashed_password='" . db_escape($db, $hashed_password) . "' ";
+    $sql .= "member_level='" . db_escape($db, $member['member_level']) . "' ";
     $sql .= "WHERE member_ID='" . db_escape($db, $member['member_ID']) . "' ";
     $sql .= "LIMIT 1";
 
@@ -177,14 +175,51 @@ function find_member_level () {
   return $member['member_level'];
 }
 
+function find_all_ratings() {
+    global $db;
 
+    $sql = "SELECT * FROM ratings ";
+    //echo $sql;
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    return $result;
+  }
 
-//function find_category_by_id() {
-//  global $db;
-//  $sql = "SELECT category_name FROM category ";
-//  $sql .= "WHERE category_ID = '$tool['category_ID']'";
-//  
-//}
+function insert_rating($fname, $lname, $rating, $rater_id) {
+  global $db;
+  $sql = "SELECT member_ID FROM members WHERE fname LIKE '%$fname%' AND lname LIKE '%$lname%'";
+  $result= mysqli_query($db, $sql);
+  confirm_result_set($result);
+  return $result;
+  $member = mysqli_fetch_assoc($result);
+  mysqli_free_result($result);
+  return $member['member_ID'];
+  $ratee_id = $member['member_ID'];
+  
+  
+    $sql2 = "INSERT INTO ratings (rating, rater_member_ID, ratee_member_ID, rating_text, rating_date) ";
+  $sql2 .= "VALUES (";
+  $sql2 .= "'" . db_escape($db, $rating['rating']) . "',";
+  $sql2 .= "'" . db_escape($db, $rater_id ). "',";
+  $sql2 .= "'" . db_escape($db, $ratee_id ). "',";
+  $sql2 .= "'" . db_escape($db, $rating['review']) . "',";
+  $sql2 .= "curdate()";
+  $sql2 .= ")";
+  $result2 = mysqli_query($db, $sql2);
+  // For INSERT statements, $result is true/false
+ 
+}
 
+function find_review_by_id($id) {
+  global $db;
+
+  $sql = "SELECT * FROM reviews ";
+  $sql .= "WHERE review_ID='" . db_escape($db, $id) . "'";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  $review = mysqli_fetch_assoc($result);
+  mysqli_free_result($result);
+  return $review; // returns an assoc. array
+}
 
 ?>

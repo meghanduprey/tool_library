@@ -63,6 +63,7 @@ CREATE TABLE ratings
   rater_member_ID INT NOT NULL,
   ratee_member_ID INT NOT NULL,
   rating_text TEXT NOT NULL,
+  rating_date DATETIME NOT NULL,
   FOREIGN KEY (rater_member_ID) REFERENCES members(member_ID),
   FOREIGN KEY (ratee_member_ID) REFERENCES members(member_ID),
   PRIMARY KEY (rating_ID)

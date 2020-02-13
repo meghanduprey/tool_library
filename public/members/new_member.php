@@ -1,6 +1,6 @@
 <?php
 require_once('../../private/initialize.php');
-redirect_by_member_level(); 
+//redirect_by_member_level(); 
 
 if(is_post_request()) {
 
@@ -65,8 +65,6 @@ $members["position"] = $member_count;
 <?php include(SHARED_PATH . '/header.php'); ?>
 
 <div id="content">
-
-  <a class="back-link" href="<?php echo url_for('/members/admin.php'); ?>">&laquo; Back to List</a>
 
   <div class="subject new">
    <div class="center">

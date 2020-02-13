@@ -7,6 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" media="all" href="<?php echo url_for('/stylesheets/styles.css'); ?>" >
 <!--    <script src='https://www.google.com/recaptcha/api.js' async defer></script>-->
+ <script>
+  var logID = 'log',
+  log = $('<div id="'+logID+'"></div>');
+$('body').append(log);
+  $('[type*="radio"]').change(function () {
+    var me = $(this);
+    log.html(me.attr('value'));
+  });   
+ </script>
   </head>
 
   <body>
@@ -17,6 +26,7 @@
       <div class="header-right">
         <a href="<?php echo url_for('/members/browse.php'); ?>">Browse</a>
         <a href="<?php echo url_for('/members/show_member_tools.php'); ?>">My Tools</a>
+        <a href="<?php echo url_for('members/show_ratings.php'); ?>">My Ratings</a>
         
         
         <?php $role = find_member_level();
