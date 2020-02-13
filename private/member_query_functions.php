@@ -185,49 +185,39 @@ function find_all_ratings() {
     return $result;
   }
 
-function find_member_ID_and_name() {
-  global $db; 
-  $sql = "SELECT member_ID, fname, lname FROM members";
-  $result = mysqli_query($db, $sql);
-  confirm_result_set($result);
-  return $result;
-}
 
-function insert_rating($fname, $lname, $rating, $rater_id) {
+
+function insert_rating($rating) {
   global $db;
-  $sql = "SELECT member_ID FROM members WHERE fname LIKE '%$fname%' AND lname LIKE '%$lname%'";
-  $result= mysqli_query($db, $sql);
-  confirm_result_set($result);
-  return $result;
-  $member = mysqli_fetch_assoc($result);
-  mysqli_free_result($result);
-  return $member['member_ID'];
-  $ratee_id = $member['member_ID'];
-  
-  
-    $sql2 = "INSERT INTO ratings (rating, rater_member_ID, ratee_member_ID, rating_text, rating_date) ";
-  $sql2 .= "VALUES (";
-  $sql2 .= "'" . db_escape($db, $rating['rating']) . "',";
-  $sql2 .= "'" . db_escape($db, $rater_id ). "',";
-  $sql2 .= "'" . db_escape($db, $ratee_id ). "',";
-  $sql2 .= "'" . db_escape($db, $rating['review']) . "',";
-  $sql2 .= "curdate()";
-  $sql2 .= ")";
-  $result2 = mysqli_query($db, $sql2);
+  $rater = find_member_ID ();
+  $sql = "INSERT INTO ratings (rating, rater_member_ID, ratee_member_ID, rating_text, rating_date) ";
+  $sql .= "VALUES (";
+  $sql .= "'" . db_escape($db, $rating['rating']) . "',";
+  $sql .= "'" . db_escape($db, $rater ). "',";
+  $sql .= "'" . db_escape($db, $rating['member_ID'] ). "',";
+  $sql .= "'" . db_escape($db, $rating['review']) . "',";
+  $sql .= "curdate()";
+  $sql .= ")";
+  echo $sql;
+//  $result = mysqli_query($db, $sql);
   // For INSERT statements, $result is true/false
- 
+//  confirm_result_set($result);
+//  return $result;
 }
 
 function find_review_by_id($id) {
   global $db;
 
-  $sql = "SELECT * FROM reviews ";
-  $sql .= "WHERE review_ID='" . db_escape($db, $id) . "'";
+  $sql = "SELECT * FROM ratings INNER JOIN members on members.member_ID=ratings.rater_member_ID  INNER JOIN members as members2 on members.member_ID=ratings.ratee_member_ID ";
+  $sql .= "WHERE rating_ID='" . db_escape($db, $id) . "'";
+  
+//  echo $sql;
   $result = mysqli_query($db, $sql);
-  confirm_result_set($result);
+//  confirm_result_set($result);
   $review = mysqli_fetch_assoc($result);
   mysqli_free_result($result);
   return $review; // returns an assoc. array
+  
 }
 
 ?>

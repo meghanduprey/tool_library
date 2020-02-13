@@ -15,10 +15,11 @@ $review = find_review_by_id($id);
   <a class="back-link" href="<?php echo url_for('/members/admin.php'); ?>">&laquo; Back to List</a>
 
   <div class="member-card">
-    <h1>Member: <?php echo h($review['rating']); ?></h1>
-    <p>First Name: <?php echo h($review['ratee_member_ID']); ?></p>
-    <p>Last Name: <?php echo h($review['rater_member_ID']); ?></p>
-    <p>Last Name: <?php echo h($review['rating_text']); ?></p>
+    <h1>Review</h1>
+    <p>Rating: <?php echo h($review['rating']); ?></p>
+    <p>Rater: <?php echo h($review['ratee_member_ID']); ?></p>
+    <p>Ratee: <?php echo h($review['rater_member_ID']); ?></p>
+    <p>Review: <?php echo h($review['rating_text']); ?></p>
 
 
   </div>
