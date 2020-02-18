@@ -145,7 +145,7 @@
     }
   }
 
-function find_member_ID () {
+function find_member_ID_by_session_email () {
   global $db;
   $email = $_SESSION['email'];
   $sql = "SELECT member_ID FROM members ";
@@ -189,26 +189,26 @@ function find_all_ratings() {
 
 function insert_rating($rating) {
   global $db;
-  $rater = find_member_ID ();
+  $rater = find_member_ID_by_session_email ();
   $sql = "INSERT INTO ratings (rating, rater_member_ID, ratee_member_ID, rating_text, rating_date) ";
   $sql .= "VALUES (";
   $sql .= "'" . db_escape($db, $rating['rating']) . "',";
   $sql .= "'" . db_escape($db, $rater ). "',";
   $sql .= "'" . db_escape($db, $rating['member_ID'] ). "',";
   $sql .= "'" . db_escape($db, $rating['review']) . "',";
-  $sql .= "curdate()";
+  $sql .= "now()";
   $sql .= ")";
-  echo $sql;
-//  $result = mysqli_query($db, $sql);
+//  echo $sql;
+  $result = mysqli_query($db, $sql);
   // For INSERT statements, $result is true/false
-//  confirm_result_set($result);
-//  return $result;
+  confirm_result_set($result);
+  return $result;
 }
 
 function find_review_by_id($id) {
   global $db;
 
-  $sql = "SELECT * FROM ratings INNER JOIN members on members.member_ID=ratings.rater_member_ID  INNER JOIN members as members2 on members.member_ID=ratings.ratee_member_ID ";
+  $sql = "SELECT * FROM ratings INNER JOIN members on members.member_ID=ratings.ratee_member_ID ";
   $sql .= "WHERE rating_ID='" . db_escape($db, $id) . "'";
   
 //  echo $sql;
@@ -218,6 +218,29 @@ function find_review_by_id($id) {
   mysqli_free_result($result);
   return $review; // returns an assoc. array
   
+}
+
+function find_rating_by_member_id() {
+    global $db;
+    
+    $member_by_ID = find_member_ID_by_session_email();
+
+    $sql = "SELECT * FROM ratings INNER JOIN members on members.member_ID=ratings.rater_member_ID ";
+    $sql .= "WHERE ratee_member_ID= $member_by_ID";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    return $result;
+  }
+
+function find_rating_by_tool_id() {
+  global $db;
+  $member_by_ID = find_member_ID_by_session_email();
+
+    $sql = "SELECT * FROM ratings INNER JOIN members on members.member_ID=ratings.rater_member_ID ";
+    $sql .= "WHERE ratee_member_ID= $member_by_ID";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    return $result;
 }
 
 ?>

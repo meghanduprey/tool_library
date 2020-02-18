@@ -51,7 +51,7 @@ function insert_tool($tool, $category) {
      return $errors;
     }
     
-    $member_by_ID = find_member_ID();
+    $member_by_ID = find_member_ID_by_session_email();
 
     $sql = "INSERT INTO tools ";
     $sql .= "(serial_number, tool_name, tool_description, tool_picture, member_ID) ";
@@ -135,7 +135,7 @@ function validate_tool($tool) {
 function find_tool_by_member_id() {
     global $db;
     
-    $member_by_ID = find_member_ID();
+    $member_by_ID = find_member_ID_by_session_email();
 
     $sql = "SELECT * FROM tools ";
     $sql .= "WHERE member_ID= $member_by_ID";

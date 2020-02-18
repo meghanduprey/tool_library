@@ -52,13 +52,11 @@ if(is_post_request()) {
 <div id="content">
 
     <div class="center">
-      <p><a href="<?php echo url_for('/members/show_member_tools.php'); ?>">&laquo; My Tools</a></p>
-      <p><a href="<?php echo url_for('/members/browse.php'); ?>">&laquo; Browse All Tools</a></p>
-
       <h2>Leave a Review</h2>
     </div>
+    
     <?php echo display_errors($errors); ?>
-    <form action="<?php echo url_for('/members/rating.php'); ?>" method="post">
+    <form action="<?php echo url_for('/members/new_rating.php'); ?>" method="post">
 
       <fieldset class="form">
        

@@ -21,12 +21,15 @@ $('body').append(log);
   <body>
   <div id="wrapper">
     <nav class="header">
-      <a href="<?php echo url_for('/index.php'); ?>"><img class="logo-img" src="<?php echo url_for('assets/wrench.png'); ?>" width="150" height="119" alt="wrench drawing"></a>
+      <a href="<?php echo url_for('/index.php'); ?>"><img class="logo-img" src="<?php echo url_for('assets/wrench.png'); ?>" width="50" alt="wrench drawing"></a>
      <a href="<?php echo url_for('/index.php'); ?>" class="logo"><h1>Jackson Park Tool Library</h1></a>
       <div class="header-right">
         <a href="<?php echo url_for('/members/browse.php'); ?>">Browse</a>
+<!--
         <a href="<?php echo url_for('/members/show_member_tools.php'); ?>">My Tools</a>
-        <a href="<?php echo url_for('members/show_ratings.php'); ?>">My Ratings</a>
+        <a href="<?php echo url_for('members/show_member_ratings.php'); ?>">My Reviews</a>
+        <a href="<?php echo url_for('members/new_rating.php'); ?>">Leave Review</a>
+-->
         
         
         <?php $role = find_member_level();
@@ -34,9 +37,13 @@ $('body').append(log);
             <a href="<?php echo url_for('members/admin.php'); ?>">Admins</a>
         <?php }?>
         <?php if(!is_logged_in()){ ?>
+          <a href="<?php echo url_for('/members/member_area.php'); ?>">Member Area</a>
           <a href="<?php echo url_for('/login.php'); ?>">Login</a>
         <?php }?>
          <?php if(is_logged_in()){ ?>
+          <a href="<?php echo url_for('/members/show_member_tools.php'); ?>">My Tools</a>
+          <a href="<?php echo url_for('/members/show_member_ratings.php'); ?>">My Reviews</a>
+          <a href="<?php echo url_for('/members/new_rating.php'); ?>">Leave a Review</a>
           <a href="<?php echo url_for('/logout.php'); ?>">Logout <?php echo $_SESSION['email']; ?></a>
         <?php }?> 
       </div>
