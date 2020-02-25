@@ -185,8 +185,6 @@ function find_all_ratings() {
     return $result;
   }
 
-
-
 function insert_rating($rating) {
   global $db;
   $rater = find_member_ID_by_session_email ();
@@ -232,15 +230,29 @@ function find_rating_by_member_id() {
     return $result;
   }
 
-function find_rating_by_tool_id() {
+function find_member_ID_by_tool_ID($id) {
   global $db;
-  $member_by_ID = find_member_ID_by_session_email();
+  $sql = "select members.member_ID FROM members INNER JOIN tools ON members.member_ID = tools.member_ID ";
+  $sql .= "WHERE tool_ID='" . db_escape($db, $id) . "'";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  $member = mysqli_fetch_assoc($result);
+  mysqli_free_result($result);
+  return $member['member_ID']; // returns an assoc. array
+}
 
-    $sql = "SELECT * FROM ratings INNER JOIN members on members.member_ID=ratings.rater_member_ID ";
-    $sql .= "WHERE ratee_member_ID= $member_by_ID";
+function find_rating_by_tool_id($id) {
+  global $db;
+  $member_id= find_member_ID_by_tool_ID($id);
+
+  $sql = "SELECT rating_ID, members.fname as ratee_fname, members.lname as ratee_lname, rating, rating_text,     rating_date, members2.fname as rater_fname, members2.lname as rater_lname 
+    from members join ratings on members.member_ID=ratings.ratee_member_ID
+    join members members2 on members2.member_ID = ratings.rater_member_ID ";
+    $sql .= "WHERE ratee_member_ID= $member_id";
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
     return $result;
 }
 
 ?>
+;

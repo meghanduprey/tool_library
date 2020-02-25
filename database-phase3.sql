@@ -69,6 +69,16 @@ CREATE TABLE ratings
   PRIMARY KEY (rating_ID)
 );
 
+CREATE TABLE pwdReset
+(
+  pwdResetId INT NOT NULL AUTO_INCREMENT,
+  pwdResetEmail TEXT,
+  pwdResetSelector TEXT,
+  pwdResetToken LONGTEXT,
+  pwdResetExpires text
+  PRIMARY KEY (pwdResetId)
+);
+
 -- Populate tables
 INSERT INTO member_level VALUES ('a', 'admin');
 INSERT INTO member_level VALUES ('m', 'member');

@@ -45,7 +45,7 @@ error_reporting(E_ALL);
   $message .= '<p>Here is your password reset link: <br>';
   $message .= '<a href="' .$url . '">' . $url . '</a></p>';
 
-  $headers = "From: Coffee Club  <cc.accounts250@gmail.com>\r\n";
+  $headers = "From: Tool Library  <cc.accounts250@gmail.com>\r\n";
   $headers .= "Reply-To: cc.accounts250@gmail.com\r\n";
   $headers .= "Content-type: text/html\r\n";
 

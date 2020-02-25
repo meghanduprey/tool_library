@@ -10,10 +10,16 @@
     <h2>My Reviews</h2>
   </div>
   <div class="flex">
+   
     <?php while ($rating = mysqli_fetch_assoc($rating_set)) { ?>
       <div class="member-card">
+       <?php 
+          $stars = "";
+          for($i=0;$i<$rating["rating"];$i++){
+          $stars .= '<i class="fa fa-star star"></i>';
+          } ?>  
         
-        <p>Rating: <?php echo h($rating['rating']); ?></p>
+        <p><?php echo $stars; ?></p>
         <p>Rater: <?php echo h($rating['fname']). " ". h($rating['lname']); ?></p>
         <p>Review: <?php echo h($rating['rating_text']); ?></p>
       </div>
