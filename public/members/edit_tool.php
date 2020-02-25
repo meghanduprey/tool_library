@@ -75,7 +75,7 @@ while($row = $result->fetch_assoc()) {
     <h2>Edit Tool</h2>
   </div>
     <?php echo display_errors($errors); ?>
-    <form action="<?php echo url_for('/members/edit_tool.php?id=' . h(u($id))); ?>" method="post">
+    <form action="<?php echo url_for('/members/edit_tool.php?id=' . h(u($id))); ?>" method="post" id="editTool">
 
       <fieldset class="form">
          <img src ="<?php echo h($tool['tool_picture']); ?>"  alt="<?php echo h($tool['tool_picture']); ?>"width="150"><br>
@@ -83,10 +83,10 @@ while($row = $result->fetch_assoc()) {
           <input type="text" name="serial_number" value="<?php echo h($tool['serial_number']); ?>" ><br>
 
         <label for="tool_name">Tool Name</label><br>
-          <input type="text" name="tool_name" value="<?php echo h($tool['tool_name']); ?>" ><br>
+          <input type="text" name="tool_name" value="<?php echo h($tool['tool_name']); ?>" required><br>
         
         <label for="tool_description">Tool Description</label><br>
-          <input type="text" name="tool_description" value="<?php echo h($tool['tool_description']); ?>" ><br>
+          <input type="text" name="tool_description" value="<?php echo h($tool['tool_description']); ?>" required><br>
         <label for="category_ID">Tool Category: </label><br>  
         <?php foreach ($tool["categories"] as $tool_id=>$category): ?>
             <input type="checkbox" name="category_ID[]" id="category_<?=$tool_id?>" value="<?=$tool_id?>" <?=$category["checked"]?>>

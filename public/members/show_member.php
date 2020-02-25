@@ -11,7 +11,7 @@ $member = find_member_by_id($id);
 <?php include(SHARED_PATH . '/header.php'); ?>
 
 <div id="content">
-
+<div class="center"><a class="back-link" href="<?php echo url_for('/members/admin.php'); ?>">&laquo; Back to List</a></div>
   <div class="member-card">
     <h1>Member: <?php echo h($member['member_ID']); ?></h1>
     <p>First Name: <?php echo h($member['fname']); ?></p>

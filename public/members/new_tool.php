@@ -97,7 +97,7 @@ $tool["position"] = $tool_count;
     </div>
     <?php echo display_errors($errors); ?>
 
-    <form action="<?php echo url_for('/members/new_tool.php'); ?>" method="post" enctype="multipart/form-data">
+    <form action="<?php echo url_for('/members/new_tool.php'); ?>" method="post" enctype="multipart/form-data" id="newTool">
 
       <fieldset class="form">
 
@@ -105,13 +105,13 @@ $tool["position"] = $tool_count;
           <input type="text" name="serial_number" value="" ><br>
 
         <label for="tool_name">Tool Name: </label><br>
-          <input type="text" name="tool_name" value="" ><br>
+          <input type="text" name="tool_name" value="" required id="tool_name"><br>
 
         <label for="tool_description">Tool Description:</label><br>
-          <input type="text" name="tool_description" value="" ><br>
+          <input type="text" name="tool_description" value="" required id="tool_description"><br>
           
-        <label for="category_ID">Tool Category: </label><br>  
-         <input type="checkbox" name="category_ID[]" value="1"> Automotive <br>
+        <label for="category_ID">Tool Category (check at least 1 option): </label><br>  
+         <input type="checkbox" name="category_ID[]" value="1" class="required" title="Please check at least one category"> Automotive <br>
          <input type="checkbox" name="category_ID[]" value="2"> Carpentry <br>
          <input type="checkbox" name="category_ID[]" value="3"> Home Maintenance <br>
          <input type="checkbox" name="category_ID[]" value="4"> Plumbing <br>
@@ -119,7 +119,7 @@ $tool["position"] = $tool_count;
          <input type="checkbox" name="category_ID[]" value="6"> Hand Tools <br>
          
         <label for="tool_picture">Tool Image: </label><br>
-          <input type="file" name="tool_picture" accept="image/*" ><br>
+          <input type="file" name="tool_picture" accept="image/*" id="tool_picture"><br>
 
         <input type="submit" value="Add Tool">
       </fieldset>      

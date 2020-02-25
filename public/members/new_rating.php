@@ -56,7 +56,7 @@ if(is_post_request()) {
     </div>
     
     <?php echo display_errors($errors); ?>
-    <form action="<?php echo url_for('/members/new_rating.php'); ?>" method="post">
+    <form action="<?php echo url_for('/members/new_rating.php'); ?>" method="post" id="newRating">
 
       <fieldset class="form">
        
@@ -70,7 +70,7 @@ if(is_post_request()) {
         
         <label for="rating">Rating:</label><br>
         <span class="star-cb-group">
-          <input type="radio" id="rating-5" name="rating" value="5"><label for="rating-5">5</label>
+          <input type="radio" id="rating-5" name="rating" value="5" class="required" title="Please rate the member"><label for="rating-5">5</label>
           <input type="radio" id="rating-4" name="rating" value="4"><label for="rating-4">4</label>
           <input type="radio" id="rating-3" name="rating" value="3"><label for="rating-3">3</label>
           <input type="radio" id="rating-2" name="rating" value="2"><label for="rating-2">2</label>

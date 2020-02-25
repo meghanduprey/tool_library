@@ -61,6 +61,9 @@ $members["position"] = $member_count;
 
 ?>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+
+</script>
 <?php $page_title = 'Create Member'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
@@ -72,39 +75,33 @@ $members["position"] = $member_count;
    </div>
     <?php echo display_errors($errors); ?>
 
-    <form action="<?php echo url_for('/members/new_member.php'); ?>" method="post">
+    <form name="newMemberForm" action="<?php echo url_for('/members/new_member.php'); ?>" method="post" id="newMemberForm">
 
       <fieldset class="form">
-        <label for="fname">First Name: </label><br>
-          <input type="text" name="fname" value=""> <br> 
+        <label for="fname" id="firstname">First Name: </label><br>
+          <input type="text" name="fname" value="" id="fname" required title="Please enter a first name"> <br> 
         
-        <label for="lname">Last Name: </label><br>
-        <input type="text" name="lname" value=""> <br>  
+        <label for="lname" id="lastname">Last Name: </label><br>
+        <input type="text" name="lname" value="" id="lname" required title="Please enter a last name"> <br>  
      
-        <label for="email">Email: </label><br>
-          <input type="text" name="email" value="" ><br>
+        <label for="email" id="Email">Email: </label><br>
+          <input type="email" name="email" value="" id="email" required title="Please enter an email address"><br>
 
-        <label for="phone">Phone Number: </label><br>
-          <input type="text" name="phone" value="" ><br>
+        <label for="phone" id="PhoneNumber">Phone Number: </label><br>
+          <input type="text" name="phone" value="" id="phone" required title="Please enter a phone number"><br>
+
+        <label for="hashed_password" id="password">Password: </label><br>
+          <input type="password" name="hashed_password" value="" id="hashed_password" required title="Please enter a password"><br>
           
-<!--
+        <label for="confirm_password" id="confirm_password">Confirm Password: </label><br>
+          <input type="password" name="confirm_password" value="" id="confirm_password" required title="Please re-enter your password"><br>  
 
-        <select name="member_level" class="member_level">
-          <option value="a">Administrator</option>
-          <option value="m">Member</option>
-        </select><br>
--->
-
-        <label for="hashed_password">Password: </label><br>
-          <input type="password" name="hashed_password" value="" ><br>
-
-      <div class="g-recaptcha" data-sitekey="6Lc2_M8UAAAAAPyo-p2oapQZO-WQIEreJsbJHJYp
-"></div>  
+      <div class="g-recaptcha" data-sitekey="6Lc2_M8UAAAAAPyo-p2oapQZO-WQIEreJsbJHJYp"></div>  
         <input type="submit" value="Create Subject">
       </fieldset>
     </form>
 
   </div>
-  <div class="push"></div>
 </div>
+<div class="push"></div>
 

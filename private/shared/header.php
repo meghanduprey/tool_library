@@ -7,16 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
     <link rel="stylesheet" media="all" href="<?php echo url_for('/stylesheets/styles.css'); ?>" >
-<!--    <script src='https://www.google.com/recaptcha/api.js' async defer></script>-->
- <script>
-  var logID = 'log',
-  log = $('<div id="'+logID+'"></div>');
-$('body').append(log);
-  $('[type*="radio"]').change(function () {
-    var me = $(this);
-    log.html(me.attr('value'));
-  });   
- </script>
+    <script src="<?php echo url_for('/js/jquery-3.4.1.min.js'); ?>" ></script>
+    <script src="<?php echo url_for('/js/jquery.validate.min.js'); ?>" ></script>
+    <script src="<?php echo url_for('/js/script.js'); ?>" ></script>
+    
+<!--
+    <script>
+      var logID = 'log';
+      log = $('<div id="'+logID+'"></div>');
+      $('body').append(log);
+      $('[type*="radio"]').change(function () {
+        var me = $(this);
+        log.html(me.attr('value'));
+      });   
+    </script>
+-->
   </head>
 
   <body>

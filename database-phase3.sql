@@ -75,7 +75,7 @@ CREATE TABLE pwdReset
   pwdResetEmail TEXT,
   pwdResetSelector TEXT,
   pwdResetToken LONGTEXT,
-  pwdResetExpires text
+  pwdResetExpires text,
   PRIMARY KEY (pwdResetId)
 );
 

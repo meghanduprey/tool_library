@@ -113,7 +113,6 @@
     $sql .= "member_level='" . db_escape($db, $member['member_level']) . "' ";
     $sql .= "WHERE member_ID='" . db_escape($db, $member['member_ID']) . "' ";
     $sql .= "LIMIT 1";
-
     $result = mysqli_query($db, $sql);
     // For UPDATE statements, $result is true/false
     if($result) {
@@ -255,4 +254,3 @@ function find_rating_by_tool_id($id) {
 }
 
 ?>
-;
