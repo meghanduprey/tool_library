@@ -26,9 +26,9 @@
               <a class="block" href="<?php echo url_for('/members/show_tool.php?id=' . h(u($show_search_tool['tool_ID']))); ?>">View</a>
               <img src="<?php echo h($show_search_tool['tool_picture']); ?>" alt="<?php echo h($tool['tool_picture']); ?>" width="150">
             </div>
-            <p><?php echo h($show_search_tool['tool_name']); ?></p>
-            <p><?php echo h($show_search_tool['tool_description']); ?></p>
-            <p class="underline"><strong>Categories:</strong></p>
+            <p><strong>Tool Name: <?php echo h($show_search_tool['tool_name']); ?></strong></p>
+            <p>Description: <?php echo h($show_search_tool['tool_description']); ?></p>
+            <p class="underline">Categories:</p>
             <ul>
               <?php $id = $show_search_tool['tool_ID']; ?>
                 <?php $category_set = find_tool_categories($id); ?>
@@ -48,9 +48,9 @@
             <a class="block" href="<?php echo url_for('/members/show_tool.php?id=' . h(u($tool['tool_ID']))); ?>">View</a>
             <img src="<?php echo h($tool['tool_picture']); ?>" alt="<?php echo h($tool['tool_picture']); ?>" width="150">
           </div>
-          <p><strong><?php echo h($tool['tool_name']); ?></strong></p>
-          <p><?php echo h($tool['tool_description']); ?></p>
-          <p class="underline"><strong>Categories:</strong></p>
+          <p><strong><span class="underline">Tool Name:</span> <?php echo h($tool['tool_name']); ?></strong></p>
+          <p><span class="underline">Description:</span> <?php echo h($tool['tool_description']); ?></p>
+          <p class="underline">Categories:</p>
           <ul>
             <?php $id = $tool['tool_ID']; ?>
             <?php $category_set = find_tool_categories($id); ?>

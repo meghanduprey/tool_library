@@ -27,8 +27,7 @@
   <body>
   <div id="wrapper">
     <nav class="header">
-      <a href="<?php echo url_for('/index.php'); ?>"><img class="logo-img" src="<?php echo url_for('assets/wrench.png'); ?>" width="50" alt="wrench drawing"></a>
-     <a href="<?php echo url_for('/index.php'); ?>" class="logo"><h1>Jackson Park Tool Library</h1></a>
+      <a href="<?php echo url_for('/index.php'); ?>"><img class="logo-img" src="<?php echo url_for('assets/toollibrary.png'); ?>" alt="Tool Library Home Wrench image" width="408"></a>
       <div class="header-right">
         <a href="<?php echo url_for('/members/browse.php'); ?>">Browse</a>
 <!--
