@@ -27,6 +27,8 @@ CREATE TABLE member_level
 CREATE TABLE members
 (
   member_ID INT NOT NULL AUTO_INCREMENT,
+  fname VARCHAR(255) NOT NULL,
+  lname VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
   phone CHAR(10) NOT NULL,
   hashed_password VARCHAR(255) NOT NULL,

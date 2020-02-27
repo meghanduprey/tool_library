@@ -93,11 +93,11 @@ $members["position"] = $member_count;
         <label for="hashed_password" id="password">Password: </label><br>
           <input type="password" name="hashed_password" value="" id="hashed_password" required title="Please enter a password"><br>
           
-        <label for="confirm_password" id="confirm_password">Confirm Password: </label><br>
+        <label for="confirm_password" >Confirm Password: </label><br>
           <input type="password" name="confirm_password" value="" id="confirm_password" required title="Please re-enter your password"><br>  
 
       <div class="g-recaptcha" data-sitekey="6Lc2_M8UAAAAAPyo-p2oapQZO-WQIEreJsbJHJYp"></div>  
-        <input type="submit" value="Create Subject">
+        <input type="submit" value="Create Account">
       </fieldset>
     </form>
 

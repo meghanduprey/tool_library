@@ -74,6 +74,7 @@ function insert_tool($tool, $category) {
       foreach($category as $category_ID) {
       $sql3= "INSERT INTO tool_category (tool_ID, category_ID) VALUES ('".$last_tool_ID."','". $category_ID."'); ";
      $result2= mysqli_query($db, $sql3);
+        return $result2;
     }
     } else {
       // INSERT failed

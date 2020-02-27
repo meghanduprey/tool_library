@@ -244,9 +244,7 @@ function find_rating_by_tool_id($id) {
   global $db;
   $member_id= find_member_ID_by_tool_ID($id);
 
-  $sql = "SELECT rating_ID, members.fname as ratee_fname, members.lname as ratee_lname, rating, rating_text,     rating_date, members2.fname as rater_fname, members2.lname as rater_lname 
-    from members join ratings on members.member_ID=ratings.ratee_member_ID
-    join members members2 on members2.member_ID = ratings.rater_member_ID ";
+  $sql = "SELECT rating_ID, members.fname as ratee_fname, members.lname as ratee_lname, rating, rating_text,     rating_date, members2.fname as rater_fname, members2.lname as rater_lname from members join ratings on members.member_ID=ratings.ratee_member_ID join members members2 on members2.member_ID = ratings.rater_member_ID ";
     $sql .= "WHERE ratee_member_ID= $member_id";
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);

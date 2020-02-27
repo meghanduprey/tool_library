@@ -61,12 +61,12 @@ if(is_post_request()) {
       <fieldset class="form">
        
         <label for="name">Leave a review for:</label> 
-        <select name="name" class="select">
-        <option value="">--Please select a neighbor--</option>
-         <?php foreach ( $array as $option ) : ?>
-          <option value="<?php echo $option->member_ID; ?>"><?php echo $option->fname . " " . $option->lname; ?></option>
-         <?php endforeach; ?>
-        </select><br>
+        <input list="name" name="name" placeholder="*Select a member*">
+        <datalist id="name">
+           <?php foreach ( $array as $option ) : ?>
+            <option value="<?php $option->member_ID; ?><?php echo $option->fname . " " . $option->lname; ?>""></option>
+           <?php endforeach; ?>
+         </datalist><br>
         
         <label for="rating">Rating:</label><br>
         <span class="star-cb-group">

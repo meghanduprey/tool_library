@@ -11,7 +11,7 @@ $review = find_review_by_id($id);
 <?php include(SHARED_PATH . '/header.php'); ?>
 <?php 
     $stars = "";
-    for($i=0;$i<$rating["rating"];$i++){
+    for($i=0;$i<$review["rating"];$i++){
     $stars .= '<i class="fa fa-star star"></i>';
     } ?> 
 <div id="content">
