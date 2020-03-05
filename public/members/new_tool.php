@@ -33,7 +33,7 @@ if(is_post_request()) {
     }
     // Check file size
     if(isset($_FILES['tool_picture'])){
-      if ($_FILES["tool_picture"]["size"] > 500000) {
+      if ($_FILES["tool_picture"]["size"] > 2097152) {
           echo "Sorry, your file is too large.";
           $uploadOk = 0;
     }
@@ -118,7 +118,7 @@ $tool["position"] = $tool_count;
          <input type="checkbox" name="category_ID[]" value="5" id="5"><label for="5">Yard and Garden </label>  <br>
          <input type="checkbox" name="category_ID[]" value="6" id="6"><label for="6">Hand Tools </label>  <br><br>
          
-        <label for="tool_picture">Tool Image (must be less than 500MB): </label><br>
+        <label for="tool_picture">Tool Image (must be less than 2MB): </label><br>
           <input type="file" name="tool_picture" accept="image/*" id="tool_picture"><br>
 
         <input type="submit" value="Add Tool">
