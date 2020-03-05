@@ -5,7 +5,7 @@
 
 <?php $page_title = 'My Ratings'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
-<div id="content">
+<main id="content">
   <div class="center">
     <h2>Reviews</h2>
   </div>
@@ -25,6 +25,6 @@
     <?php } //end while ?>
   </div>
   <div class="push"></div>
-</div>
+</main>
 
 <?php include(SHARED_PATH . '/footer.php'); ?>

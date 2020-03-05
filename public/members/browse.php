@@ -4,12 +4,12 @@
 
 <?php $page_title = 'Browse Tools'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
-<div id="content">
+<main id="content">
 
   <div class="center">
-    <h2>Browse Tools</h2>
+    <h1>Browse Tools</h1>
     <form method="post" action="browse.php">
-      <input type="text" name="searchterm">
+      <input type="text" name="searchterm" id="searchterm" aria-label="Search">
       <input type="submit" value="Search">
     </form>
   </div>
@@ -65,5 +65,5 @@
   
 
   <div class="push"></div>
-</div>
-  <?php include(SHARED_PATH . '/footer.php'); ?>
+</main>
+<?php include(SHARED_PATH . '/footer.php'); ?>

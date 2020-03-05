@@ -67,17 +67,17 @@ $members["position"] = $member_count;
 <?php $page_title = 'Create Member'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
-<div id="content">
+<main id="content">
 
   <div class="subject new">
    <div class="center">
-     <h2>Create Member</h2>
+     <h1>Create Member</h1>
    </div>
     <?php echo display_errors($errors); ?>
 
     <form name="newMemberForm" action="<?php echo url_for('/members/new_member.php'); ?>" method="post" id="newMemberForm">
 
-      <fieldset class="form">
+      <div class="form">
         <label for="fname" id="firstname">First Name: </label><br>
           <input type="text" name="fname" value="" id="fname" required title="Please enter a first name"> <br> 
         
@@ -98,10 +98,10 @@ $members["position"] = $member_count;
 
       <div class="g-recaptcha" data-sitekey="6Lc2_M8UAAAAAPyo-p2oapQZO-WQIEreJsbJHJYp"></div>  
         <input type="submit" value="Create Account">
-      </fieldset>
+      </div>
     </form>
 
   </div>
-</div>
+</main>
 <div class="push"></div>
 

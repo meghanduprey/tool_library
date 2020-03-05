@@ -5,7 +5,7 @@
 
 <?php $page_title = 'My Tools'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
-<div id="content">
+<main id="content">
   <div class="center">
     <h2>My Tools</h2>
     <p><a href="<?php echo url_for('/members/new_tool.php'); ?>">Add New Tool</a></p>
@@ -31,8 +31,8 @@
       </div>
     <?php } //end while ?>
   </div>
-  <div class="push"></div>
-</div>
+</main>
+<div class="push"></div>
 
 
 

@@ -14,15 +14,18 @@ $review = find_review_by_id($id);
     for($i=0;$i<$review["rating"];$i++){
     $stars .= '<i class="fa fa-star star"></i>';
     } ?> 
-<div id="content">
+<main id="content">
 
   <div class="member-card">
     <h1>Review</h1>
-    <p><?php echo $stars; ?></p>
-    <p>Ratee: <?php echo h($review['fname']). " " . h($review['lname']); ?></p>
+    <div class="center">
+      <p><?php echo $stars; ?></p>
+    </div>
+    <p>Ratee: <?php echo h($review['ratee_fname']). " " . h($review['ratee_lname']); ?></p>
+    <p>Rater: <?php echo h($review['rater_fname']) . " " . h($review['rater_lname']); ?></p>
     <p>Review: <?php echo h($review['rating_text']); ?></p>
     <p>Date: <?php echo h($review['rating_date']); ?></p>
   </div>
   <div class="push"></div>
-</div>
+</main>
 <?php include(SHARED_PATH . '/footer.php'); ?>

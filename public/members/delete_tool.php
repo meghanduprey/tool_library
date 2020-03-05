@@ -21,7 +21,7 @@ if(is_post_request()) {
 <?php $page_title = 'Delete Tool'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
-<div id="content">
+<main id="content">
 
   <a class="back-link" href="<?php echo url_for('/index.php'); ?>">&laquo; Back to Home</a>
 
@@ -31,10 +31,10 @@ if(is_post_request()) {
 
     <form action="<?php echo url_for('/members/delete_tool.php?id=' . h(u($tool['tool_ID']))); ?>" method="post">
       <div id="operations">
-        <input type="submit" name="commit" value="Delete Tool" >
+        <input type="submit" name="commit" value="Delete Tool" aria-label="Delete Tool">
       </div>
     </form>
   <div class="push"></div>
-</div>
+</main>
 
 <?php include(SHARED_PATH . '/footer.php'); ?>

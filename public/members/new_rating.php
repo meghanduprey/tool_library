@@ -10,7 +10,7 @@ array_pop ( $array );
 if(is_post_request()) { 
   global $db;
   $rating = [];
-  $rating['member_ID'] = $_POST['name'];
+  $rating['member_ID'] = $_POST['answer'];
   $rating['rating'] = $_POST['rating'];
   $rating['review'] = $_POST['review'];
   $rater_ID = $_SESSION['email'];
@@ -49,26 +49,28 @@ if(is_post_request()) {
 <?php $page_title = 'Rate Member'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
-<div id="content">
+<main id="content">
 
     <div class="center">
-      <h2>Leave a Review</h2>
+      <h1>Leave a Review</h1>
     </div>
     
     <?php echo display_errors($errors); ?>
     <form action="<?php echo url_for('/members/new_rating.php'); ?>" method="post" id="newRating">
 
-      <fieldset class="form">
+      <div class="form">
        
-        <label for="name">Leave a review for:</label> 
-        <input list="name" name="name" placeholder="*Select a member*">
+        <label for="answer">Leave a review for:</label> 
+        <input list="name" name="name" placeholder="*Select a member*" id="answer">
         <datalist id="name">
            <?php foreach ( $array as $option ) : ?>
-            <option value="<?php $option->member_ID; ?><?php echo $option->fname . " " . $option->lname; ?>""></option>
+            <option data-value="<?php echo $option->member_ID; ?>"><?php echo $option->fname . " " . $option->lname; ?></option>
            <?php endforeach; ?>
-         </datalist><br>
+         </datalist>
+         <input type="hidden" name="answer" id="answer-hidden">
+         <br>
         
-        <label for="rating">Rating:</label><br>
+        Rating:<br>
         <span class="star-cb-group">
           <input type="radio" id="rating-5" name="rating" value="5" class="required" title="Please rate the member"><label for="rating-5">5</label>
           <input type="radio" id="rating-4" name="rating" value="4"><label for="rating-4">4</label>
@@ -82,10 +84,9 @@ if(is_post_request()) {
         <textarea name="review"  id="review" rows="10" cols="40"> </textarea>
          
         <input type="submit" value="Leave Review">
-      </fieldset>
+      </div>
     </form>
-
   <div class="push"></div>
-</div>
+</main>
 
 <?php include(SHARED_PATH . '/footer.php'); ?>

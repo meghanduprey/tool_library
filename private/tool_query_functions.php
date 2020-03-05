@@ -107,6 +107,7 @@ function update_tool($tool, $category, $id) {
     $sql3 .= "WHERE tool_ID=" . db_escape($db, $tool['tool_ID']) . " ";
 
     $result3 = mysqli_query($db, $sql3);
+      return $result3;
     // For UPDATE statements, $result is true/false
     } else {
       // UPDATE failed
@@ -147,7 +148,7 @@ function find_tool_by_member_id() {
 
 function search_form($searchterm) {
   global $db;
-  $sql = "SELECT * FROM tools WHERE tool_name LIKE '%$searchterm%' OR tool_description LIKE '%$searchterm%'";
+  $sql = "SELECT * FROM tools WHERE tool_name LIKE '%" . db_escape($db, $searchterm) . "%' OR tool_description LIKE '" . db_escape($db, $searchterm) . "%'";
   $result= mysqli_query($db, $sql);
   confirm_result_set($result);
   return $result;

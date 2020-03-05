@@ -52,7 +52,7 @@ if(is_post_request()) {
 <?php $page_title = 'Log in'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
-<div id="content">
+<main id="content">
  <div class="center">
    <h2>Log in</h2>
  </div>
@@ -61,14 +61,14 @@ if(is_post_request()) {
   <?php echo display_errors($errors); ?>
 
   <form action="login.php" method="post">
-   <fieldset class="form">
+   <div class="form">
     Username:<br>
     <input type="text" name="email" value="<?php echo h($email); ?>" ><br>
     Password:<br>
     <input type="password" name="password" value="" ><br>
     <input type="submit" name="submit" value="Submit">
     <a href="members/new_member.php" class="create_member">Create Account</a>
-    </fieldset>
+    </div>
   </form>
 
   <?php
@@ -81,6 +81,6 @@ if(is_post_request()) {
    <div class="center">
     <a href="reset-password.php">Forgot your password?</a>
    </div>
-</div>
+</main>
 
 <?php include(SHARED_PATH . '/footer.php'); ?>

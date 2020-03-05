@@ -8,9 +8,9 @@
 
 <?php include(SHARED_PATH . '/header.php'); ?>
 
-<div id="content">
-  <h2>Members</h2>
-    <a class="action" href="<?php echo url_for('/members/new_member.php'); ?>">Create New Member</a>
+<main id="content">
+  <h1>Members</h1>
+  <a class="action" href="<?php echo url_for('/members/new_member.php'); ?>">Create New Member</a>
 
   <div class="member_table">
      <table class="list">
@@ -43,6 +43,6 @@
     </table>
   </div>
   <div class="push"></div>
-</div>
+</main>
 
 <?php include(SHARED_PATH . '/footer.php'); ?>

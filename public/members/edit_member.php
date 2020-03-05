@@ -44,18 +44,18 @@ if(is_post_request()) {
 <?php $page_title = 'Edit Member'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
-<div id="content">
+<main id="content">
 
   <a class="back-link" href="<?php echo url_for('/members/admin.php'); ?>">&laquo; Back to List</a>
 
 
     <div class="center">
-      <h2>Edit Member</h2>
+      <h1>Edit Member</h1>
     </div>
     <?php echo display_errors($errors); ?>
     <form action="<?php echo url_for('/members/edit_member.php?id=' . h(u($id))); ?>" method="post" id="editMemberForm">
 
-      <fieldset class="form">
+      <div class="form">
         <label for="fname">First Name: </label><br>
           <input type="text" name="fname" value="<?php echo h($member['fname']); ?>" id="fname" required> <br> 
         
@@ -77,10 +77,10 @@ if(is_post_request()) {
           <br>
 
         <input type="submit" value="Edit Subject" >
-      </fieldset>
+      </div>
 
     </form>
     <div class="push"></div>
-  </div>
+  </main>
 
 <?php include(SHARED_PATH . '/footer.php'); ?>

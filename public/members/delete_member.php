@@ -21,7 +21,7 @@ if(is_post_request()) {
 <?php $page_title = 'Delete Member'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
-<div id="content">
+<main id="content">
 
   <a class="back-link" href="<?php echo url_for('/members/admin.php'); ?>">&laquo; Back to List</a>
 
@@ -32,11 +32,11 @@ if(is_post_request()) {
 
     <form action="<?php echo url_for('/members/delete_member.php?id=' . h(u($member['member_ID']))); ?>" method="post">
       <div id="operations">
-        <input type="submit" name="commit" value="Delete Member" >
+        <input type="submit" name="commit" value="Delete Member" aria-label="Delete Member">
       </div>
     </form>
   </div>
   <div class="push"></div>
-</div>
+</main>
 
 <?php include(SHARED_PATH . '/footer.php'); ?>

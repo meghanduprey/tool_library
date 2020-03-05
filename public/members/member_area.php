@@ -5,7 +5,7 @@
 <div id="content">
 
   <div class="center">
-    <h2>Member Area</h2>
+    <h1>Member Area</h1>
   </div>
   <p>If you are a member of the Tool Library you can add and delete your tools, request tools from other members, rate other members, and view your ratings. Please <a href="<?php echo url_for('/login.php'); ?>">Login or create an account</a> to access these member areas.</p>
    

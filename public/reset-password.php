@@ -5,7 +5,7 @@ require_once('../private/initialize.php'); ?>
 <?php $page_title = 'Reset Password'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
-<div id="content">
+<main id="content">
   <h1>Reset Password</h1>
   <p>An email will be sent to you with instructions on how to reset your password.</p>
   <form action="reset-request.php" method="post">
@@ -22,6 +22,6 @@ require_once('../private/initialize.php'); ?>
 
 ?>
 
-</div>
+</main>
 
 <?php include(SHARED_PATH . '/footer.php'); ?>

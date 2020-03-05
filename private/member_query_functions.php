@@ -195,8 +195,9 @@ function insert_rating($rating) {
   $sql .= "'" . db_escape($db, $rating['review']) . "',";
   $sql .= "now()";
   $sql .= ")";
-//  echo $sql;
+  echo $sql;
   $result = mysqli_query($db, $sql);
+
   // For INSERT statements, $result is true/false
   confirm_result_set($result);
   return $result;
@@ -205,7 +206,7 @@ function insert_rating($rating) {
 function find_review_by_id($id) {
   global $db;
 
-  $sql = "SELECT * FROM ratings INNER JOIN members on members.member_ID=ratings.ratee_member_ID ";
+  $sql = "SELECT rating_ID, members.fname as ratee_fname, members.lname as ratee_lname, rating, rating_text,     rating_date, members2.fname as rater_fname, members2.lname as rater_lname from members join ratings on members.member_ID=ratings.ratee_member_ID join members members2 on members2.member_ID = ratings.rater_member_ID ";
   $sql .= "WHERE rating_ID='" . db_escape($db, $id) . "'";
   
 //  echo $sql;
@@ -222,8 +223,8 @@ function find_rating_by_member_id() {
     
     $member_by_ID = find_member_ID_by_session_email();
 
-    $sql = "SELECT * FROM ratings INNER JOIN members on members.member_ID=ratings.rater_member_ID ";
-    $sql .= "WHERE ratee_member_ID= $member_by_ID";
+    $sql = "SELECT rating_ID, members.fname as ratee_fname, members.lname as ratee_lname, rating, rating_text,     rating_date, members2.fname as rater_fname, members2.lname as rater_lname from members join ratings on members.member_ID=ratings.ratee_member_ID join members members2 on members2.member_ID = ratings.rater_member_ID ";
+    $sql .= "WHERE ratings.ratee_member_ID= $member_by_ID";
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
     return $result;

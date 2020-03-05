@@ -5,7 +5,7 @@
 
 <?php $page_title = 'My Ratings'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
-<div id="content">
+<main id="content">
   <div class="center">
     <h2>My Reviews</h2>
   </div>
@@ -19,14 +19,17 @@
           $stars .= '<i class="fa fa-star star"></i>';
           } ?>  
         
-        <p><?php echo $stars; ?></p>
-        <p>Rater: <?php echo h($rating['fname']). " ". h($rating['lname']); ?></p>
+        <div class="center">
+          <p><?php echo $stars; ?></p>
+        </div>
+        <p>Rater: <?php echo h($rating['rater_fname']). " ". h($rating['rater_lname']); ?></p>
+        <p>Ratee: <?php echo h($rating['ratee_fname']). " ". h($rating['ratee_lname']); ?></p>
         <p>Review: <?php echo h($rating['rating_text']); ?></p>
       </div>
     <?php } //end while ?>
   </div>
   <div class="push"></div>
-</div>
+</main>
 
 
 

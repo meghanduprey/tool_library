@@ -87,22 +87,22 @@ $tool["position"] = $tool_count;
 <?php $page_title = 'Create Tool'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
-<div id="content">
+<main id="content">
 
     <div class="center">
       <p><a href="<?php echo url_for('/members/show_member_tools.php'); ?>">&laquo; My Tools</a></p>
       <p><a href="<?php echo url_for('/members/browse.php'); ?>">&laquo; Browse All Tools</a></p>
 
-      <h2>Create Tool</h2>
+      <h1>Create Tool</h1>
     </div>
     <?php echo display_errors($errors); ?>
 
     <form action="<?php echo url_for('/members/new_tool.php'); ?>" method="post" enctype="multipart/form-data" id="newTool">
 
-      <fieldset class="form">
+      <div class="form">
 
         <label for="serial_number">Serial Number: </label><br>
-          <input type="text" name="serial_number" value="" ><br>
+          <input type="text" name="serial_number" value="" id="serial_number"><br>
 
         <label for="tool_name">Tool Name: </label><br>
           <input type="text" name="tool_name" value="" required id="tool_name"><br>
@@ -110,22 +110,22 @@ $tool["position"] = $tool_count;
         <label for="tool_description">Tool Description:</label><br>
           <input type="text" name="tool_description" value="" required id="tool_description"><br>
           
-        <label for="category_ID">Tool Category (check at least 1 option): </label><br>  
-         <input type="checkbox" name="category_ID[]" value="1" class="required" title="Please check at least one category"> Automotive <br>
-         <input type="checkbox" name="category_ID[]" value="2"> Carpentry <br>
-         <input type="checkbox" name="category_ID[]" value="3"> Home Maintenance <br>
-         <input type="checkbox" name="category_ID[]" value="4"> Plumbing <br>
-         <input type="checkbox" name="category_ID[]" value="5"> Yard and Garden <br>
-         <input type="checkbox" name="category_ID[]" value="6"> Hand Tools <br>
+        Tool Category (check at least 1 option): <br>  
+         <input type="checkbox" name="category_ID[]" value="1" class="required" title="Please check at least one category" id="1"><label for="1">Automotive </label> <br>
+         <input type="checkbox" name="category_ID[]" value="2" id="2"><label for="2">Carpentry </label> <br>
+         <input type="checkbox" name="category_ID[]" value="3" id="3"> <label for="3">Home Maintenance </label> <br>
+         <input type="checkbox" name="category_ID[]" value="4" id="4"><label for="4"> Plumbing </label> <br>
+         <input type="checkbox" name="category_ID[]" value="5" id="5"><label for="5">Yard and Garden </label>  <br>
+         <input type="checkbox" name="category_ID[]" value="6" id="6"><label for="6">Hand Tools </label>  <br><br>
          
-        <label for="tool_picture">Tool Image: </label><br>
+        <label for="tool_picture">Tool Image (must be less than 500MB): </label><br>
           <input type="file" name="tool_picture" accept="image/*" id="tool_picture"><br>
 
         <input type="submit" value="Add Tool">
-      </fieldset>      
+      </div>      
     </form>
 
-  <div class="push"></div>
-</div>
+</main>
+<div class="push"></div>
 
 <?php include(SHARED_PATH . '/footer.php'); ?>
