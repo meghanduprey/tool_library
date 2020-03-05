@@ -118,7 +118,7 @@ h5 {
 }
 
 .delete-button {
-  background-color: #DC143C;
+  background-color: #dc143c;
   border-radius: 3px;
   color: #fff;
   margin-top: 3px;
@@ -251,8 +251,7 @@ footer {
   color: #fff;
   margin: 0 auto;
   padding: 20px;
-/*  text-align: center;*/
-  width: 300px;
+  width: 350px;
 }
 
 input[type="submit"] {
@@ -306,8 +305,16 @@ input[name="name"] {
 
 }
 
-fieldset a {
-  color: #fff;
+.form_error span {
+  width: 80%;
+  height: 35px;
+/*  margin: 3px 10%;*/
+  font-size: 16px;
+  color: #f2b705;
+}
+
+.form_error input {
+  border: 1px solid #f2b705;
 }
 
 /*STARS*/

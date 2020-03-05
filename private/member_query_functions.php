@@ -25,6 +25,17 @@
     return $member; // returns an assoc. array
   }
 
+function find_all_member_email_addresses() {
+  global $db;
+
+    $sql = "SELECT email FROM members ";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $member = mysqli_fetch_assoc($result);
+    mysqli_free_result($result);
+    return $member; // returns an assoc. array
+}
+
   function find_member_by_email($email) {
     global $db;
 

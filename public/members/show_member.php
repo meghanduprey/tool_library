@@ -19,7 +19,9 @@ $member = find_member_by_id($id);
     <p>Email: <?php echo h($member['email']); ?></p>
     <p>Phone: <?php echo h($member['phone']); ?></p>
     <p>Member Level: <?php echo h($member['member_level']); ?></p>
-
+    <div class="center" >
+      <a href="<?php echo url_for('/login.php'); ?>">Login</a>
+    </div>
   </div>
   <div class="push"></div>
 </div>

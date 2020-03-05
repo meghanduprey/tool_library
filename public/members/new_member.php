@@ -1,9 +1,16 @@
 <?php
 require_once('../../private/initialize.php');
-//redirect_by_member_level(); 
+
 
 if(is_post_request()) {
+  $email = $_POST['email'];
 
+  $sql_e = "SELECT * FROM members WHERE email='$email'";
+  $res_e = mysqli_query($db, $sql_e);
+
+  if(mysqli_num_rows($res_e) > 0){
+    $email_error = "Sorry that email address is already taken"; 	
+  }else{
   // Handle form values sent by new.php
 
   $member = [];
@@ -42,13 +49,11 @@ if(is_post_request()) {
     } else {
       $errors= $result;
     }
-//
+
     }
   }
-  else {
-    //display the form
-  }
-
+  
+}
 
 
 
@@ -61,9 +66,7 @@ $members["position"] = $member_count;
 
 ?>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-<script>
 
-</script>
 <?php $page_title = 'Create Member'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
@@ -83,10 +86,14 @@ $members["position"] = $member_count;
         
         <label for="lname" id="lastname">Last Name: </label><br>
         <input type="text" name="lname" value="" id="lname" required title="Please enter a last name"> <br>  
-     
-        <label for="email" id="Email">Email: </label><br>
-          <input type="email" name="email" value="" id="email" required title="Please enter an email address"><br>
-
+        
+        <div <?php if (isset($email_error)): ?> class="form_error" <?php endif ?> >
+          <label for="email" id="Email">Email: </label><br>
+            <input type="email" name="email" value="" id="email" required title="Please enter an email address"><br>
+          <?php if (isset($email_error)): ?>
+      	    <span><?php echo $email_error; ?></span>
+          <?php endif ?>
+        </div>
         <label for="phone" id="PhoneNumber">Phone Number: </label><br>
           <input type="text" name="phone" value="" id="phone" required title="Please enter a phone number"><br>
 
