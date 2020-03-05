@@ -15,7 +15,7 @@
       <div class="card">
         <div class="center">
           <a class="block" href="<?php echo url_for('/members/edit_tool.php?id=' . h(u($tool['tool_ID']))); ?>">Edit tool</a>
-        <img src="<?php echo h($tool['tool_picture']); ?>" alt="<?php echo h($tool['tool_picture']); ?>" width="150" height="auto">
+        <img src="<?php echo h($tool['tool_picture']); ?>" alt="<?php echo h($tool['tool_picture']); ?>" width="150">
         </div>
         <p>Serial Number: <?php echo h($tool['serial_number']); ?></p>
         <p><strong>Tool Name: <?php echo h($tool['tool_name']); ?></strong></p>
