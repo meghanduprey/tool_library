@@ -8,6 +8,7 @@ DROP TABLE IF EXISTS member_level;
 DROP TABLE IF EXISTS members;
 DROP TABLE IF EXISTS tools;
 DROP TABLE IF EXISTS category;
+DROP TABLE IF EXISTS tool_category;
 
 
 CREATE TABLE category

@@ -7,7 +7,7 @@
 <?php include(SHARED_PATH . '/header.php'); ?>
 <main id="content">
   <div class="center">
-    <h2>My Tools</h2>
+    <h1>My Tools</h1>
     <p><a href="<?php echo url_for('/members/new_tool.php'); ?>">Add New Tool</a></p>
   </div>
   <div class="flex">
