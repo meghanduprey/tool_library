@@ -37,11 +37,11 @@ if(is_post_request()) {
 //        redirect_to(url_for('/members/show_member_tools.php'));
       } else {
         //username found but password does not match
-        $errors[] = $login_failure_message;
+        $errors[] = "Incorrect password";
       }
   } else {
     //username not found
-    $errors[] = $login_failure_message;
+    $errors[] = "Username does not exist";
   }
 }
 }

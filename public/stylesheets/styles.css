@@ -155,7 +155,7 @@ h5 {
   text-align: center;
 }
 
-.errors ul {
+.main-errors ul {
   list-style-type: none;
   margin-bottom: 0;
   padding-left: 1em;
@@ -211,9 +211,9 @@ h5 {
   color: #000;
 }
 
-.header a.active {
-  background-color: dodgerblue;
-  color: #fff;
+.active {
+  background-color: #f2b705;
+  color: #000;
 }
 
 .header-right {

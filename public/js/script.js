@@ -86,8 +86,15 @@ $( document ).ready(function() {
     }//end error placement
   });//end validate
   
-  
-  
+  var url = window.location.href;
+  var activePage = url;
+  $('.header-right a').each(function () {
+      var linkPage = this.href;
+
+      if (activePage == linkPage) {
+          $(this).addClass("active");
+      }
+    });
 }); // end document ready
 
   //NEW RATING FORM
