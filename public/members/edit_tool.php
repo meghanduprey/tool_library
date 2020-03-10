@@ -87,7 +87,9 @@ if ($memberID1 == $memberID2) {
       <form action="<?php echo url_for('/members/edit_tool.php?id=' . h(u($id))); ?>" method="post" id="editTool">
 
         <div class="form">
-           <img src ="<?php echo h($tool['tool_picture']); ?>"  alt="<?php echo h($tool['tool_picture']); ?>"width="150"><br>
+           <div class="center">
+             <img src ="<?php echo h($tool['tool_picture']); ?>"  alt="<?php echo h($tool['tool_picture']); ?>"width="150">
+           </div><br>
           <label for="serial_number">Serial Number</label><br>
             <input type="text" name="serial_number"  id="serial_number" value="<?php echo h($tool['serial_number']); ?>" ><br>
 

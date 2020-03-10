@@ -34,7 +34,7 @@ if(is_post_request()) {
     // Check file size
     if(isset($_FILES['tool_picture'])){
       if ($_FILES["tool_picture"]["size"] > 2097152) {
-          echo "Sorry, your file is too large.";
+          echo "Sorry, your file is too large. It must be under 2MB";
           $uploadOk = 0;
     }
   }

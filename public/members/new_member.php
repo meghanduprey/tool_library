@@ -111,4 +111,4 @@ $members["position"] = $member_count;
   </div>
 </main>
 <div class="push"></div>
-
+<?php include(SHARED_PATH . '/footer.php'); ?>

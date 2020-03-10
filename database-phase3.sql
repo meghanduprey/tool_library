@@ -1,7 +1,7 @@
 -- for localhost only
-DROP DATABASE IF EXISTS tool_library;
-CREATE DATABASE tool_library;
-USE tool_library;
+DROP DATABASE IF EXISTS tool_library2;
+CREATE DATABASE tool_library2;
+USE tool_library2;
 
 -- Drop any tables that might exist
 DROP TABLE IF EXISTS member_level;

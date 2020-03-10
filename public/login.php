@@ -54,7 +54,7 @@ if(is_post_request()) {
 
 <main id="content">
  <div class="center">
-   <h2>Log in</h2>
+   <h1>Log in</h1>
  </div>
   
 
