@@ -220,20 +220,39 @@ h5 {
   float: right;
 }
 
-
 /*END HEADER NAVIGATION*/
 
-/*BROWSE PAGE NAVIGATION*/
+/*BROWSE PAGE NAVIGATION */
 nav ul {
   list-style-type: none;
 }
 
 nav li {
+  background-color: #f2b705;
+  border-radius: 3px;
   float: left;
+  margin-right: 5px;
 }
 
 nav li a {
+  display: block;
+  padding: 10px;
   text-decoration: none;
+  
+}
+
+.page-link {
+  color: #004e4e;
+}
+
+.page-item.active .page-link:hover {
+  cursor: pointer;
+}
+
+.page-item.active .page-link {
+  background-color: #f2b705;
+  border-radius: 3px;
+  color: #000;
 }
 
 footer {

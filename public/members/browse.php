@@ -1,7 +1,7 @@
 <?php require_once('../../private/initialize.php'); ?>
 
 <?php 
-  $showRecordPerPage = 5;
+  $showRecordPerPage = 10;
   if(isset($_GET['page']) && !empty($_GET['page'])){
   $currentPage = $_GET['page'];
   }else{
@@ -87,7 +87,7 @@
             <?php if($currentPage != $firstPage) { ?>
             <li class="page-item">
               <a class="page-link" href="?page=<?php echo $firstPage ?>" tabindex="-1" aria-label="Previous">
-              <span aria-hidden="true">First</span>
+              <span aria-hidden="true">First Page</span>
               </a>
             </li>
             <?php } ?>
@@ -105,7 +105,7 @@
             </li>
             <li class="page-item">
               <a class="page-link" href="?page=<?php echo $lastPage ?>" aria-label="Next">
-              <span aria-hidden="true">Last</span>
+              <span aria-hidden="true">Last Page</span>
               </a>
             </li>
             <?php } ?>

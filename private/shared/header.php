@@ -29,7 +29,7 @@
   <body>
   
   <div id="wrapper">
-    <nav class="header">
+    <nav class="header" aria-label="website navigation">
       <a href="<?php echo url_for('/index.php'); ?>"><img class="logo-img" src="<?php echo url_for('assets/toollibrary.png'); ?>" alt="Tool Library Home Wrench" width="408"></a>
       <a href="<?php echo url_for('/index.php'); ?>"><img class="small-logo-img" src="<?php echo url_for('assets/wrench.png'); ?>" alt="Tool Library Home Wrench" width="50"></a>
       <div class="header-right">
