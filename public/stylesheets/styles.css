@@ -250,9 +250,9 @@ nav li a {
 }
 
 .page-item.active .page-link {
-  background-color: #f2b705;
+  background-color: #027373;
   border-radius: 3px;
-  color: #000;
+  color: #fff;
 }
 
 footer {
