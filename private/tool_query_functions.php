@@ -3,6 +3,7 @@
 
  function find_all_tools() {
   global $db;
+  
   $sql = "SELECT * FROM tools ";
   $sql .="ORDER BY tools.tool_ID ASC";
   $result= mysqli_query($db, $sql);

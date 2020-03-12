@@ -92,9 +92,13 @@ $( document ).ready(function() {
       var linkPage = this.href;
 
       if (activePage == linkPage) {
-          $(this).addClass("active");
+          $(this).addClass("activePage");
       }
     });
+  
+  //PAGINATION
+  
+  
 }); // end document ready
 
   //NEW RATING FORM

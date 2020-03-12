@@ -211,7 +211,7 @@ h5 {
   color: #000;
 }
 
-.active {
+.activePage {
   background-color: #f2b705;
   color: #000;
 }
@@ -222,6 +222,19 @@ h5 {
 
 
 /*END HEADER NAVIGATION*/
+
+/*BROWSE PAGE NAVIGATION*/
+nav ul {
+  list-style-type: none;
+}
+
+nav li {
+  float: left;
+}
+
+nav li a {
+  text-decoration: none;
+}
 
 footer {
   background-color: #027373;
