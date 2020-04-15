@@ -40,3 +40,58 @@ $member = [];
   else {
     //display the form
   }
+
+//page navigation
+
+<?php 
+  $showRecordPerPage = 10;
+  if(isset($_GET['page']) && !empty($_GET['page'])){
+  $currentPage = $_GET['page'];
+  }else{
+  $currentPage = 1;
+  }
+  $startFrom = ($currentPage * $showRecordPerPage) - $showRecordPerPage;
+  
+  $sql = "SELECT * FROM tools ";
+  $sql .="ORDER BY tools.tool_ID ASC LIMIT $startFrom, $showRecordPerPage";
+  $result= mysqli_query($db, $sql);
+  $sql2 = "SELECT * FROM tools";
+  $result2= mysqli_query($db, $sql2);
+  $totalTools = mysqli_num_rows($result2);
+  $lastPage = ceil($totalTools/$showRecordPerPage);
+  $firstPage = 1;
+  $nextPage = $currentPage + 1;
+  $previousPage = $currentPage -1;
+  $tool_set = $result;
+?>
+<nav aria-label="Page navigation">
+          <ul class="pagination">
+            <?php if($currentPage != $firstPage) { ?>
+            <li class="page-item">
+              <a class="page-link" href="?page=<?php echo $firstPage ?>" tabindex="-1" aria-label="Previous">
+              <span aria-hidden="true">First Page</span>
+              </a>
+            </li>
+            <?php } ?>
+            <?php if($currentPage >= 2) { ?>
+            <li class="page-item">
+              <a class="page-link" href="?page=<?php echo $previousPage ?>"><?php echo $previousPage ?></a>
+            </li>
+            <?php } ?>
+            <li class="page-item active">
+              <a class="page-link" href="?page=<?php echo $currentPage ?>"><?php echo $currentPage ?></a>
+            </li>
+            <?php if($currentPage != $lastPage) { ?>
+            <li class="page-item">
+              <a class="page-link" href="?page=<?php echo $nextPage ?>"><?php echo $nextPage ?></a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="?page=<?php echo $lastPage ?>" aria-label="Next">
+              <span aria-hidden="true">Last Page</span>
+              </a>
+            </li>
+            <?php } ?>
+          </ul>
+        </nav>
+
+

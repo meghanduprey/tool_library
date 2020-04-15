@@ -111,7 +111,7 @@ $tool["position"] = $tool_count;
           <input type="text" name="tool_description" value="" required id="tool_description"><br>
           
         Tool Category (check at least 1 option): <br>  
-         <input type="checkbox" name="category_ID[]" value="1" class="required" title="Please check at least one category" id="1"><label for="1">Automotive </label> <br>
+         <input type="checkbox" name="category_ID[]" value="1" title="Please check at least one category" id="1"><label for="1">Automotive </label> <br>
          <input type="checkbox" name="category_ID[]" value="2" id="2"><label for="2">Carpentry </label> <br>
          <input type="checkbox" name="category_ID[]" value="3" id="3"> <label for="3">Home Maintenance </label> <br>
          <input type="checkbox" name="category_ID[]" value="4" id="4"><label for="4"> Plumbing </label> <br>

@@ -75,8 +75,8 @@ function insert_tool($tool, $category) {
       foreach($category as $category_ID) {
       $sql3= "INSERT INTO tool_category (tool_ID, category_ID) VALUES ('".$last_tool_ID."','". $category_ID."'); ";
      $result2= mysqli_query($db, $sql3);
-        return $result2;
     }
+        return $result2;
     } else {
       // INSERT failed
       echo mysqli_error($db);
@@ -157,7 +157,7 @@ function search_form($searchterm) {
 
 function search_form_category($searchterm) {
   global $db;
-  $sql = "SELECT * FROM category WHERE category_name LIKE '%$searchterm%'";
+  $sql = "SELECT * FROM category WHERE category_name LIKE '%" . db_escape($db, $searchterm) . "%'";
   $result= mysqli_query($db, $sql);
   confirm_result_set($result);
   return $result;

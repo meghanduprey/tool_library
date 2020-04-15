@@ -47,8 +47,8 @@
               <img src="<?php echo h($show_search_tool['tool_picture']); ?>" alt="<?php echo h($tool['tool_picture']); ?>" width="150">
             </div>
             <p><strong>Tool Name: <?php echo h($show_search_tool['tool_name']); ?></strong></p>
-            <p>Description: <?php echo h($show_search_tool['tool_description']); ?></p>
-            <p class="underline">Categories:</p>
+            <p><strong>Description: </strong><?php echo h($show_search_tool['tool_description']); ?></p>
+            <p><strong>Categories:</strong></p>
             <ul>
               <?php $id = $show_search_tool['tool_ID']; ?>
                 <?php $category_set = find_tool_categories($id); ?>
@@ -65,12 +65,14 @@
     <?php while ($tool = mysqli_fetch_assoc($tool_set)) { ?>
         <div class="card">
          <div class="center">
+           <?php if(is_logged_in()){ ?>
             <a class="block" href="<?php echo url_for('/members/show_tool.php?id=' . h(u($tool['tool_ID']))); ?>">View</a>
+            <?php }?> 
             <img src="<?php echo h($tool['tool_picture']); ?>" alt="<?php echo h($tool['tool_picture']); ?>" width="150">
           </div>
-          <p><strong><span class="underline">Tool Name:</span> <?php echo h($tool['tool_name']); ?></strong></p>
-          <p><span class="underline">Description:</span> <?php echo h($tool['tool_description']); ?></p>
-          <p class="underline">Categories:</p>
+          <p><strong>Tool Name: <?php echo h($tool['tool_name']); ?></strong></p>
+          <p><strong>Description: </strong><?php echo h($tool['tool_description']); ?></p>
+          <p><strong>Categories:</strong></p>
           <ul>
             <?php $id = $tool['tool_ID']; ?>
             <?php $category_set = find_tool_categories($id); ?>
@@ -82,35 +84,7 @@
         <?php   } //end while ?>
         </div>
     <?php   } //end else ?> 
-        <nav aria-label="Page navigation">
-          <ul class="pagination">
-            <?php if($currentPage != $firstPage) { ?>
-            <li class="page-item">
-              <a class="page-link" href="?page=<?php echo $firstPage ?>" tabindex="-1" aria-label="Previous">
-              <span aria-hidden="true">First Page</span>
-              </a>
-            </li>
-            <?php } ?>
-            <?php if($currentPage >= 2) { ?>
-            <li class="page-item">
-              <a class="page-link" href="?page=<?php echo $previousPage ?>"><?php echo $previousPage ?></a>
-            </li>
-            <?php } ?>
-            <li class="page-item active">
-              <a class="page-link" href="?page=<?php echo $currentPage ?>"><?php echo $currentPage ?></a>
-            </li>
-            <?php if($currentPage != $lastPage) { ?>
-            <li class="page-item">
-              <a class="page-link" href="?page=<?php echo $nextPage ?>"><?php echo $nextPage ?></a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="?page=<?php echo $lastPage ?>" aria-label="Next">
-              <span aria-hidden="true">Last Page</span>
-              </a>
-            </li>
-            <?php } ?>
-          </ul>
-        </nav>
+        
   
 
   <div class="push"></div>

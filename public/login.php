@@ -63,10 +63,10 @@ if(is_post_request()) {
   <form action="login.php" method="post">
    <div class="form">
     <label for="email">Email:</label><br>
-    <input type="text" name="email" value="" id="email"><br>
+    <input type="text" name="email" value="" id="email" required><br>
     <label for="password">Password:</label><br>
-    <input type="password" name="password" value="" id="password"><br>
-    <input type="submit" name="submit" value="Submit">
+    <input type="password" name="password" value="" id="password" required><br>
+    <input type="submit" name="submit" value="Login">
     <a href="members/new_member.php" class="create_member">Create Account</a>
     </div>
   </form>
