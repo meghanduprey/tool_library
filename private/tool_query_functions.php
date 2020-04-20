@@ -157,7 +157,7 @@ function search_form($searchterm) {
 
 function search_form_category($searchterm) {
   global $db;
-  $sql = "SELECT * FROM category WHERE category_name LIKE '%" . db_escape($db, $searchterm) . "%'";
+  $sql = "SELECT * FROM tools INNER JOIN tool_category ON tool_category.tool_ID = tools.tool_ID INNER JOIN category ON tool_category.category_ID= category.category_ID WHERE category_name LIKE '%" . db_escape($db, $searchterm) . "%'";
   $result= mysqli_query($db, $sql);
   confirm_result_set($result);
   return $result;

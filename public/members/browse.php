@@ -58,6 +58,28 @@
             </ul>
             </div>
         <?php } //end while loop ?>
+        
+        <?php while ($show_search_tool = mysqli_fetch_assoc($search_tool_category)) { ?>
+          <div class="card">
+           <div class="center">
+              <a class="block" href="<?php echo url_for('/members/show_tool.php?id=' . h(u($show_search_tool['tool_ID']))); ?>">View</a>
+              <img src="<?php echo h($show_search_tool['tool_picture']); ?>" alt="<?php echo h($tool['tool_picture']); ?>" width="150">
+            </div>
+            <p><strong>Tool Name: <?php echo h($show_search_tool['tool_name']); ?></strong></p>
+            <p><strong>Description: </strong><?php echo h($show_search_tool['tool_description']); ?></p>
+            <p><strong>Categories:</strong></p>
+            <ul>
+              <?php $id = $show_search_tool['tool_ID']; ?>
+                <?php $category_set = find_tool_categories($id); ?>
+                <?php while ($category = mysqli_fetch_assoc($category_set)) { ?>
+                <li><?php echo h($category['category_name']); ?></li>
+                <?php } ?>
+            </ul>
+            </div>
+        <?php } //end while loop ?>
+        
+        
+        
       </div>
       
    <?php } else { ?>
