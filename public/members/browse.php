@@ -36,7 +36,13 @@
    <?php if(is_post_request()) {
       $searchterm = $_POST['searchterm'];
       $search_tool = search_form($searchterm); 
-      $search_tool_category = search_form_category($searchterm); ?>
+      $search_tool_category = search_form_category($searchterm); 
+  
+      if($search_tool->num_rows < 1 AND $search_tool_category-> num_rows < 1){ ?>
+        <p>Sorry there are no results</p>
+     <?php } 
+  
+  ?>
       
       <p class="center"><a href="<?php echo url_for('/members/browse.php'); ?>">&laquo; Back to Browse</a></p>
       <div class="flex">
